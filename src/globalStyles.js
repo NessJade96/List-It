@@ -5,7 +5,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     background:  rgb(114, 134, 107) ;
-    font-family: Open-Sans, Helvetica, Sans-Serif;
+    font-family: 'Dosis', sans-serif;
   }
 `;
 
