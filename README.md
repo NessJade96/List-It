@@ -14,10 +14,18 @@ then `npm run start` starts the live server.
 ## User Story
 
 ```md
+with PWA:
 AS A shopper
 I WANT to create a shopping list that I can share with others with or without an internet connection
 SO THAT I can reliably retrieve for later use at the supermarket
+
+without PWA:
+AS A shopper
+I WANT to create a shopping list that I can edit and share with others
+SO THAT I can retrieve for later use at the supermarket
 ```
+
+(Possible PWA support https://www.npmjs.com/package/vite-plugin-pwa )
 
 ## Screenshots:
 
@@ -40,6 +48,8 @@ SO THAT I can reliably retrieve for later use at the supermarket
 
 1. Write my planning notes, folder setup, and create readme.md
 
-2.
+2. Create React DOM to render the mobile screen.
+
+3. React rendering and components first render.
 
 Thank you, Vanessa Bloom <(^.^)>
