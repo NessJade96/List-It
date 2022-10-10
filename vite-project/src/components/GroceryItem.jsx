@@ -12,7 +12,7 @@ function GroceryItem(props) {
 	console.log(props);
 
 	const submitUpdate = (value) => {
-		props.editGroceryItem(edit.id, value);
+		props.editGroceryListItem(edit.id, value);
 		setEdit({id: null, value: '', eagerness: ''});
 	};
 

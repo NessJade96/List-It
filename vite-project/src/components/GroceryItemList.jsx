@@ -42,7 +42,7 @@ export default function GroceryItemList() {
 	};
 
 	// Function to edit the grocery list item
-	const editGrocerylistItem = (itemId, newValue) => {
+	const editGroceryListItem = (itemId, newValue) => {
 		if (!newValue.text) {
 			return;
 		}
@@ -61,7 +61,7 @@ export default function GroceryItemList() {
 				groceryItems={groceryItems}
 				completeGroceryItem={completeGroceryItem}
 				removeGroceryItem={removeGroceryItem}
-				editGrocerylistItem={editGrocerylistItem}
+				editGroceryListItem={editGroceryListItem}
 			/>
 		</div>
 	);

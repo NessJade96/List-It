@@ -48,7 +48,7 @@ export default function GroceryItemForm(props) {
 						</p>
 					</div>
 				</div>
-				<button className="grocery-button">Add list item</button>
+				<button>Add list item</button>
 			</form>
 		</div>
 	) : (
