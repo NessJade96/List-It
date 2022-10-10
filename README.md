@@ -31,6 +31,10 @@ SO THAT I can retrieve for later use at the supermarket
 
 ![image](./assets/wireframe.PNG)
 
+## Technologies used:
+
+Vite for React, HTML, CSS, Styled-Components, Babel-plugin-styled-components,
+
 ## Links:
 
 - GitHub: https://github.com/NessJade96/Project-3
@@ -42,7 +46,15 @@ SO THAT I can retrieve for later use at the supermarket
 
 - Create wireframe concept of mobile, tablet, and desktop.
 - Setup React, src code etc. Client and Server
-- Set up configs for PWA's (using Babel and Webpack)
+- Set up configs for PWA's (using Babel and Webpack) (Will do after MVP)
+
+Colorpallet from Coolors:
+Dark Purple: 41, 25, 46 RGB
+Burnished Brown: 139, 112, 113 RBG
+Xanadu: 114, 134, 107 RGB
+Laurel Green: 169, 183, 155 RGB
+Gainsboro: 221, 218, 222 RBG
+![Colours](./assets/Colour%20Theme.jpg)
 
 ## Commit notes:
 
@@ -51,5 +63,7 @@ SO THAT I can retrieve for later use at the supermarket
 2. Create React DOM to render the mobile screen.
 
 3. React rendering and components first render.
+
+4. Installed Styled-Components and the Babel-plugin-styled-components, to use for the applications styling. I read the docs and created a globalStyles.js for my background colour and text fonts etc.
 
 Thank you, Vanessa Bloom <(^.^)>

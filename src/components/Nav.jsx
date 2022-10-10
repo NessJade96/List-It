@@ -1,13 +1,15 @@
 import React from 'react';
 import profilePic from '../../public/assets/profilepic.jpg';
+import {Button} from './Button';
 
 export default function Nav() {
 	return (
 		<header>
 			<div>
 				<ul>
-					<li>your lists</li>
-					<li>recipies</li>
+					<li>
+						<Button test>your lists</Button>
+					</li>
 				</ul>
 				<h1>Shopping List</h1>
 			</div>
