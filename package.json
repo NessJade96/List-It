@@ -1,14 +1,19 @@
 {
-	"name": "vite-project",
+	"name": "list-it",
+	"homepage": "https://github.com/NessJade96/Project-3",
 	"private": true,
 	"version": "0.0.0",
 	"type": "module",
 	"scripts": {
 		"dev": "vite",
+		"predeploy": "npm run build",
+		"deploy": "gh-pages -d build",
+		"start": "vite start",
 		"build": "vite build",
 		"preview": "vite preview"
 	},
 	"dependencies": {
+		"gh-pages": "^4.0.0",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"styled-components": "^5.3.6"
