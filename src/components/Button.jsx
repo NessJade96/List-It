@@ -13,9 +13,10 @@ export const Button = styled.button`
 	}
 
 	${(props) =>
-		props.test &&
+		props.list &&
 		css`
 			background: var(--Xanadu);
 			color: white;
+			border: 1px solid var(--Gainsboro);
 		`};
 `;

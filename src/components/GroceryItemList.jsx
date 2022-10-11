@@ -55,7 +55,7 @@ export default function GroceryItemList() {
 	};
 
 	return (
-		<div>
+		<>
 			<GroceryItemForm onSubmit={addGroceryItem} />
 			<GroceryItem
 				groceryItems={groceryItems}
@@ -63,6 +63,6 @@ export default function GroceryItemList() {
 				removeGroceryItem={removeGroceryItem}
 				editGroceryListItem={editGroceryListItem}
 			/>
-		</div>
+		</>
 	);
 }

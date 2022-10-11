@@ -5,7 +5,7 @@ import styled, {css} from 'styled-components';
 
 export const Header = styled.header`
 	border-radius: 3px;
-	border: 2px solid var(--Gainsboro);
+	border-bottom: 2px solid var(--Gainsboro);
 	background: var(--Green);
 	padding: 0.25rem 1rem;
 	display: flex;

@@ -28,6 +28,7 @@ img {
   height: 3rem;
   width: auto;
   border-radius: 100%;
+  margin: 0 1rem 0 0
 `;
 
 export default GlobalStyle;

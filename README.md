@@ -69,4 +69,7 @@ Gainsboro: 221, 218, 222 RBG
 5. Created styling for the NAV using sytled-components.
    ![Nav](./assets/Mobile-Nav-Style.jpg)
 
+6. Made simple styling (pending some cleaning up) on the GroceryItemForm.
+   ![GroceryItemForm](./assets/GroceryItemForm-styling.jpg)
+
 Thank you, Vanessa Bloom <(^.^)>
