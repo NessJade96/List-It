@@ -11,6 +11,8 @@ const GroceryItemRow = styled.div`
 	margin: 0.5rem;
 	color: var(--Purple);
 	background: var(--Xanadu);
+	font-size: 1.5rem;
+	place-items: center;
 `;
 
 function GroceryItem(props) {
@@ -23,10 +25,6 @@ function GroceryItem(props) {
 	});
 
 	const submitUpdate = (value) => {
-		console.log(
-			'🚀 ~ file: GroceryItem.jsx ~ line 26 ~ submitUpdate ~ value',
-			value
-		);
 		props.editGroceryListItem(value);
 		setEdit({id: null, value: '', amount: '', measurement: ''});
 	};
@@ -56,9 +54,9 @@ function GroceryItem(props) {
 						})
 					}
 				>
-					✏️
+					✎
 				</Icons>
-				<Icons onClick={() => props.removeGroceryItem(item.id)}> 🗑️</Icons>
+				<Icons onClick={() => props.removeGroceryItem(item.id)}>✔</Icons>
 			</div>
 		</GroceryItemRow>
 	));

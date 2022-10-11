@@ -49,12 +49,13 @@ Vite for React, HTML, CSS, Styled-Components, Babel-plugin-styled-components,
 - Set up configs for PWA's (using Babel and Webpack) (Will do after MVP)
 
 Colorpallet from Coolors:
-Dark Purple: 41, 25, 46 RGB
-Burnished Brown: 139, 112, 113 RBG
-Xanadu: 114, 134, 107 RGB
-Laurel Green: 169, 183, 155 RGB
-Gainsboro: 221, 218, 222 RBG
-![Colours](./assets/Colour%20Theme.jpg)
+
+- Dark Purple: 41, 25, 46 RGB
+- Burnished Brown: 139, 112, 113 RBG
+- Xanadu: 114, 134, 107 RGB
+- Laurel Green: 169, 183, 155 RGB
+- Gainsboro: 221, 218, 222 RBG
+  ![Colours](./assets/Colour%20Theme.jpg)
 
 ## Commit notes:
 
@@ -74,5 +75,7 @@ Gainsboro: 221, 218, 222 RBG
 
 7. Styling of the grocery list items.
    ![GroceryItems](./assets/GroceryListItems.jpg)
+
+8. // to do // Go through each of the text/value variables and rename them to be consistant like your amount and measurements :)
 
 Thank you, Vanessa Bloom <(^.^)>
