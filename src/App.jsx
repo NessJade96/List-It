@@ -5,11 +5,11 @@ import GroceryItemList from './components/GroceryItemList';
 
 function App() {
 	return (
-		<div>
+		<>
 			<GlobalStyle />
 			<Nav />
 			<GroceryItemList />
-		</div>
+		</>
 	);
 }
 

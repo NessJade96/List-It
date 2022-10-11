@@ -66,4 +66,6 @@ Gainsboro: 221, 218, 222 RBG
 
 4. Installed Styled-Components and the Babel-plugin-styled-components, to use for the applications styling. I read the docs and created a globalStyles.js for my background colour and text fonts etc.
 
+5. Created styling for the NAV using sytled-components.
+
 Thank you, Vanessa Bloom <(^.^)>

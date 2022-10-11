@@ -1,24 +1,21 @@
 import styled, {css} from 'styled-components';
 
 export const Button = styled.button`
-	background: transparent;
 	border-radius: 3px;
-	border: 2px solid palevioletred;
-	color: palevioletred;
-	margin: 0 1em;
-	padding: 0.25em 1em;
+	background: transparent;
+	color: var(--Purple);
+	font-size: 1rem;
+	padding: 0.25em 0.5em;
 
-	${(props) =>
-		props.primary &&
-		css`
-			background: palevioletred;
-			color: white;
-		`};
+	&:hover {
+		background: var(--Xanadu);
+		color: white;
+	}
 
 	${(props) =>
 		props.test &&
 		css`
-			background: pink;
-			color: black;
+			background: var(--Xanadu);
+			color: white;
 		`};
 `;
