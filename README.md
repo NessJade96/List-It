@@ -80,4 +80,4 @@ Colorpallet from Coolors:
 
 Thank you, Vanessa Bloom <(^.^)>
 
-[Good link on deploying to github pages while using Vite])(https://dev.to/shashannkbawa/deploying-vite-app-to-github-pages-3ane)
+[Good link on deploying to github pages while using Vite](https://dev.to/shashannkbawa/deploying-vite-app-to-github-pages-3ane)
