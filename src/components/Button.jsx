@@ -13,7 +13,7 @@ export const Button = styled.button`
 	}
 
 	${(props) =>
-		props.list &&
+		props.primary &&
 		css`
 			background: var(--Xanadu);
 			color: white;

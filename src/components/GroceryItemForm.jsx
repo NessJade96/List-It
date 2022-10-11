@@ -2,19 +2,26 @@ import React, {useState} from 'react';
 import {Form} from './Form';
 import {Input} from './Input';
 import {Button} from './Button';
+import {H3} from './H3';
 
 export default function GroceryItemForm(props) {
-	const [input, setInput] = useState('');
-	const [amount, setAmount] = useState('');
-	const [measurement, setMeasurement] = useState('');
+	const [input, setInput] = useState(props.edit?.value ?? '');
+	const [amount, setAmount] = useState(props.edit?.amount ?? '');
+	const [measurement, setMeasurement] = useState(props.edit?.measurement ?? '');
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
+
+		props.onSubmit({
+			id: Math.random(Math.floor() * 1000),
+			text: input,
+			amount: amount,
+			measurement: measurement,
+		});
 		// empty inputs after submit
 		setInput('');
 		setMeasurement('');
 		setAmount('');
-		setEagerness('');
 	};
 
 	// Maybe change this into a try/catch?
@@ -54,35 +61,37 @@ export default function GroceryItemForm(props) {
 					name="measurement"
 					onChange={handleChange}
 				/>
-				<Button list>Add list item</Button>
+				<Button primary>Add list item</Button>
 			</Form>
 		</div>
 	) : (
 		<div>
-			<h3>Update engtry: {props.edit.value}</h3>
-			<Form onSubmit={handleSubmit}>
-				<Input
-					type="text"
-					placeholder={props.edit.value}
-					value={input}
-					name="text"
-					onChange={handleChange}
-				/>
+			<H3>Updating: {props.edit.value}</H3>
+			<Form
+				onSubmit={(e) => {
+					e.preventDefault();
+					props.onSubmit({
+						id: props.edit?.id,
+						value: input,
+						amount,
+						measurement,
+					});
+				}}
+			>
+				<Input type="text" value={input} name="text" onChange={handleChange} />
 				<Input
 					type="number"
-					placeholder="How many?"
 					value={amount}
 					name="amount"
 					onChange={handleChange}
 				/>
 				<Input
 					type="text"
-					placeholder="measurement?"
 					value={measurement}
 					name="measurement"
 					onChange={handleChange}
 				/>
-				<Button list>Update</Button>
+				<Button primary>Update</Button>
 			</Form>
 		</div>
 	);

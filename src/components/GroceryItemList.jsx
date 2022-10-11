@@ -14,7 +14,6 @@ export default function GroceryItemList() {
 
 		// Add the new list item to the existing array of objects
 		const newGroceryItems = [item, ...groceryItems];
-		console.log(newGroceryItems);
 
 		// Call setGroceryItem to update state with our new set of grocery list items
 		setGroceryItem(newGroceryItems);
@@ -29,7 +28,6 @@ export default function GroceryItemList() {
 			}
 			return item;
 		});
-		console.log(updatedGroceryItem);
 		setGroceryItem(updatedGroceryItem);
 	};
 
@@ -42,16 +40,18 @@ export default function GroceryItemList() {
 	};
 
 	// Function to edit the grocery list item
-	const editGroceryListItem = (itemId, newValue) => {
-		if (!newValue.text) {
+	const editGroceryListItem = ({id, value, ...rest}) => {
+		if (id == null) {
 			return;
 		}
 
-		//Using the prev argument that is provided witht he useState hook to map through the list of items.
 		// Then check to see if the item ID matches the ID of the item that was clicked, and if so we set it to a new value.
-		setBucket((prev) => {
-			prev.map((item) => (item.id === itemId ? newValue : item));
-		});
+
+		const foo = groceryItems.map((item) =>
+			item.id === id ? {id, text: value, ...rest} : item
+		);
+
+		setGroceryItem(foo);
 	};
 
 	return (

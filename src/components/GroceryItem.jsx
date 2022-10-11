@@ -1,51 +1,66 @@
 import React, {useState} from 'react';
 import GroceryItemForm from './GroceryItemForm';
+import styled, {css} from 'styled-components';
+import {Icons} from './icons';
+
+const GroceryItemRow = styled.div`
+	display: flex;
+	justify-content: space-between;
+	border: 1px solid var(--Gainsboro);
+	padding: 0.5rem;
+	margin: 0.5rem;
+	color: var(--Purple);
+	background: var(--Xanadu);
+`;
 
 function GroceryItem(props) {
 	const {groceryItems} = props;
 	const [edit, setEdit] = useState({
 		id: null,
 		value: '',
-		eagerness: '',
+		amount: '',
+		measurement: '',
 	});
 
-	console.log(props);
-
 	const submitUpdate = (value) => {
-		props.editGroceryListItem(edit.id, value);
-		setEdit({id: null, value: '', eagerness: ''});
+		console.log(
+			'🚀 ~ file: GroceryItem.jsx ~ line 26 ~ submitUpdate ~ value',
+			value
+		);
+		props.editGroceryListItem(value);
+		setEdit({id: null, value: '', amount: '', measurement: ''});
 	};
 
-	console.log(groceryItems);
 	if (edit.id) {
 		return <GroceryItemForm edit={edit} onSubmit={submitUpdate} />;
 	}
 
 	return groceryItems.map((item, i) => (
-		<div
+		<GroceryItemRow
 			className={
-				item.isComplete
-					? `groceryItem-row complete ${item.eagerness}`
-					: `groceryItem-row ${item.eagerness}`
+				item.isComplete ? `groceryItem-row complete` : `groceryItem-row`
 			}
 			key={i}
 		>
 			<div key={item.id} onClick={() => props.completeGroceryItem(item.id)}>
-				{item.text}
+				{item.text} {item.amount} {item.measurement}
 			</div>
-			<div className="icons">
-				{console.log(item)}
-				<p
+			<div style={{display: 'flex'}} className="icons">
+				<Icons
 					onClick={() =>
-						setEdit({id: item.id, value: item.text, eagerness: item.eagerness})
+						setEdit({
+							id: item.id,
+							value: item.text,
+							amount: item.amount,
+							measurement: item.measurement,
+						})
 					}
 				>
-					{' '}
 					✏️
-				</p>
-				<p onClick={() => props.removeGroceryItem(item.id)}> 🗑️</p>
+				</Icons>
+				<Icons onClick={() => props.removeGroceryItem(item.id)}> 🗑️</Icons>
 			</div>
-		</div>
+		</GroceryItemRow>
 	));
 }
 

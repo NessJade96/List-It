@@ -72,4 +72,7 @@ Gainsboro: 221, 218, 222 RBG
 6. Made simple styling (pending some cleaning up) on the GroceryItemForm.
    ![GroceryItemForm](./assets/GroceryItemForm-styling.jpg)
 
+7. Styling of the grocery list items.
+   ![GroceryItems](./assets/GroceryListItems.jpg)
+
 Thank you, Vanessa Bloom <(^.^)>
