@@ -79,3 +79,5 @@ Colorpallet from Coolors:
 8. // to do // Go through each of the text/value variables and rename them to be consistant like your amount and measurements :)
 
 Thank you, Vanessa Bloom <(^.^)>
+
+[Good link on deploying to github pages while using Vite])(https://dev.to/shashannkbawa/deploying-vite-app-to-github-pages-3ane)
