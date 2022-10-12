@@ -33,7 +33,7 @@ export default function Nav() {
 		<Header>
 			<YourList>
 				<Button secondary>your lists</Button>
-				<Button secondary>login/logout</Button>
+				<Button secondary>logout</Button>
 				<H1>Shopping List</H1>
 			</YourList>
 			<img

@@ -84,6 +84,9 @@ Colorpallet from Coolors:
 9. Added in media queries for list page, added the login/logout button (no functions yet as I need to create the server).
 
 10. Renamed each of the text/value variables so they are consistent like the amount and measurements variables.
+    ![ShoppingListHomePageClient](./assets/MVP%20of%20grocery%20list%20CLIENT.jpg)
+
+11.
 
 Thank you, Vanessa Bloom <(^.^)>
 
