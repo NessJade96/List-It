@@ -5,7 +5,7 @@ import {Button} from './Button';
 import {H3} from './H3';
 
 export default function GroceryItemForm(props) {
-	const [input, setInput] = useState(props.edit?.value ?? '');
+	const [text, setText] = useState(props.edit?.text ?? '');
 	const [amount, setAmount] = useState(props.edit?.amount ?? '');
 	const [measurement, setMeasurement] = useState(props.edit?.measurement ?? '');
 
@@ -14,12 +14,12 @@ export default function GroceryItemForm(props) {
 
 		props.onSubmit({
 			id: Math.random(Math.floor() * 1000),
-			text: input,
-			amount: amount,
-			measurement: measurement,
+			text,
+			amount,
+			measurement,
 		});
 		// empty inputs after submit
-		setInput('');
+		setText('');
 		setMeasurement('');
 		setAmount('');
 	};
@@ -27,7 +27,7 @@ export default function GroceryItemForm(props) {
 	// Maybe change this into a try/catch switch/case?
 	const handleChange = (e) => {
 		if (e.target.name === 'text') {
-			setInput(e.target.value);
+			setText(e.target.value);
 		} else if (e.target.name === 'amount') {
 			setAmount(e.target.value);
 		} else if (e.target.name === 'measurement') {
@@ -43,7 +43,7 @@ export default function GroceryItemForm(props) {
 				<Input
 					type="text"
 					placeholder="+ Add item"
-					value={input}
+					value={text}
 					name="text"
 					onChange={handleChange}
 				/>
@@ -66,19 +66,19 @@ export default function GroceryItemForm(props) {
 		</div>
 	) : (
 		<div>
-			<H3>Updating: {props.edit.value}</H3>
+			<H3>Updating: {props.edit.text}</H3>
 			<Form
 				onSubmit={(e) => {
 					e.preventDefault();
 					props.onSubmit({
 						id: props.edit?.id,
-						value: input,
+						text,
 						amount,
 						measurement,
 					});
 				}}
 			>
-				<Input type="text" value={input} name="text" onChange={handleChange} />
+				<Input type="text" value={text} name="text" onChange={handleChange} />
 				<Input
 					type="number"
 					value={amount}

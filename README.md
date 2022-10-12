@@ -81,7 +81,9 @@ Colorpallet from Coolors:
 
 8. Changed the website icon, and other icons throughout the website.
 
-9. Added in media queries for list page, added the login/logout button (no functions yet as I need to create the server), renamed each of the text/value variables so they are consistant like the amount and measurements variables.
+9. Added in media queries for list page, added the login/logout button (no functions yet as I need to create the server).
+
+10. Renamed each of the text/value variables so they are consistent like the amount and measurements variables.
 
 Thank you, Vanessa Bloom <(^.^)>
 

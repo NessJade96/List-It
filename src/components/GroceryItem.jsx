@@ -19,14 +19,14 @@ function GroceryItem(props) {
 	const {groceryItems} = props;
 	const [edit, setEdit] = useState({
 		id: null,
-		value: '',
+		text: '',
 		amount: '',
 		measurement: '',
 	});
 
-	const submitUpdate = (value) => {
-		props.editGroceryListItem(value);
-		setEdit({id: null, value: '', amount: '', measurement: ''});
+	const submitUpdate = (text) => {
+		props.editGroceryListItem(text);
+		setEdit({id: null, text: '', amount: '', measurement: ''});
 	};
 
 	if (edit.id) {
@@ -48,13 +48,13 @@ function GroceryItem(props) {
 					onClick={() =>
 						setEdit({
 							id: item.id,
-							value: item.text,
+							text: item.text,
 							amount: item.amount,
 							measurement: item.measurement,
 						})
 					}
 				>
-					✎test
+					✎
 				</Icons>
 				<Icons onClick={() => props.removeGroceryItem(item.id)}>✔</Icons>
 			</div>

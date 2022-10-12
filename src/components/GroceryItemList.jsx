@@ -40,18 +40,18 @@ export default function GroceryItemList() {
 	};
 
 	// Function to edit the grocery list item
-	const editGroceryListItem = ({id, value, ...rest}) => {
+	const editGroceryListItem = ({id, ...rest}) => {
 		if (id == null) {
 			return;
 		}
 
 		// Then check to see if the item ID matches the ID of the item that was clicked, and if so we set it to a new value.
 
-		const foo = groceryItems.map((item) =>
-			item.id === id ? {id, text: value, ...rest} : item
+		const editedGoceryListItems = groceryItems.map((item) =>
+			item.id === id ? {id, ...rest} : item
 		);
 
-		setGroceryItem(foo);
+		setGroceryItem(editedGoceryListItems);
 	};
 
 	return (
