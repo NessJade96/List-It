@@ -88,6 +88,8 @@ Colorpallet from Coolors:
 
 11. Files and folders for the server side created.
 
+12.
+
 Thank you, Vanessa Bloom <(^.^)>
 
 [Good link on deploying to github pages while using Vite](https://dev.to/shashannkbawa/deploying-vite-app-to-github-pages-3ane)
