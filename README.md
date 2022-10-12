@@ -45,6 +45,9 @@ Vite for React, HTML, CSS, Styled-Components, Babel-plugin-styled-components,
 1. Go through the criteria
 
 - Create wireframe concept of mobile, tablet, and desktop.
+  -media queries: Mobile 320px - 480px, Tablet 481px - 1024px, PC 1025+px
+- Create user login/signup page or model
+  - link this to user signup (mutations/querires)
 - Setup React, src code etc. Client and Server
 - Set up configs for PWA's (using Babel and Webpack) (Will do after MVP)
 
@@ -76,7 +79,9 @@ Colorpallet from Coolors:
 7. Styling of the grocery list items.
    ![GroceryItems](./assets/GroceryListItems.jpg)
 
-8. // to do // Go through each of the text/value variables and rename them to be consistant like your amount and measurements :)
+8. Changed the website icon, and other icons throughout the website.
+
+9. Added in media queries for list page, added the login/logout button (no functions yet as I need to create the server), renamed each of the text/value variables so they are consistant like the amount and measurements variables.
 
 Thank you, Vanessa Bloom <(^.^)>
 

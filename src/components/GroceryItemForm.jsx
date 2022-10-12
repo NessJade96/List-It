@@ -24,7 +24,7 @@ export default function GroceryItemForm(props) {
 		setAmount('');
 	};
 
-	// Maybe change this into a try/catch?
+	// Maybe change this into a try/catch switch/case?
 	const handleChange = (e) => {
 		if (e.target.name === 'text') {
 			setInput(e.target.value);

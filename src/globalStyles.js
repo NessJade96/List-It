@@ -11,8 +11,13 @@ const GlobalStyle = createGlobalStyle`
 
 #root{
   margin: 0;
+  margin-right: auto;
+  margin-left: auto;
   padding: 0;
   text-align: left;
+  @media (min-width: 1020px) {
+		width: 1020px;
+  }
 }
 
 body {

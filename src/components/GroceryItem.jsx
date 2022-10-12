@@ -54,7 +54,7 @@ function GroceryItem(props) {
 						})
 					}
 				>
-					✎
+					✎test
 				</Icons>
 				<Icons onClick={() => props.removeGroceryItem(item.id)}>✔</Icons>
 			</div>

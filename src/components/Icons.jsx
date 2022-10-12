@@ -4,4 +4,8 @@ export const Icons = styled.p`
 	margin: 0rem;
 	padding: 0.5rem;
 	font-size: 1.5rem;
+
+	&:hover {
+		color: var(--Gainsboro);
+	}
 `;

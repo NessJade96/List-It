@@ -21,13 +21,19 @@ export const H1 = styled.h1`
 	margin: 0.5rem;
 `;
 
-export const YourList = styled.div``;
+export const YourList = styled.div`
+	@media (min-width: 1020px) {
+		display: flex;
+		flex-direction: row-reverse;
+	}
+`;
 
 export default function Nav() {
 	return (
 		<Header>
 			<YourList>
-				<Button>your lists</Button>
+				<Button secondary>your lists</Button>
+				<Button secondary>login/logout</Button>
 				<H1>Shopping List</H1>
 			</YourList>
 			<img
