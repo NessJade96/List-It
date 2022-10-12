@@ -88,7 +88,7 @@ Colorpallet from Coolors:
 
 11. Files and folders for the server side created.
 
-12.
+12. Created the loginForm and SignupForm components and began styling. I have imported all main components to the App.js. I later will create functions to conditionally render each component depending if the user is logged in, etc.
 
 Thank you, Vanessa Bloom <(^.^)>
 

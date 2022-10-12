@@ -6,7 +6,7 @@ const GroceryItemSchema = new Schema({
 		required: true,
 	},
 	amount: {
-		type: Int,
+		type: Number,
 	},
 	measurement: {
 		type: String,
