@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {useMutation} from '@apollo/client';
 import Auth from '../utils/auth';
 import {LOGIN_USER} from '../utils/mutations';
+import {NavLink} from 'react-router-dom';
 
 //Styled Components
 import {Button} from './Button';
@@ -52,8 +53,12 @@ const LoginForm = () => {
 	return (
 		<>
 			<H3 primary>Login to List It!</H3>
-			<H3>Enter your details below:</H3>
-			<p></p>
+			<H3>Don't have an account?</H3>
+			<NavLink to="/signup" exact>
+				<Button style={{margin: '0 0 1rem 1.5rem'}} primary>
+					Signup
+				</Button>
+			</NavLink>
 			<Form>
 				<Input
 					type="email"
@@ -67,7 +72,7 @@ const LoginForm = () => {
 					// value={password}
 					name="password"
 				/>
-				<Button primary>Signup</Button>
+				<Button primary>Login</Button>
 			</Form>
 		</>
 	);
