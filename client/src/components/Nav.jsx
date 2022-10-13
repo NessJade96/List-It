@@ -1,13 +1,15 @@
 import React from 'react';
-import profilePic from '../assets/profilepic.jpg';
+import avocado from '../assets/avo.svg';
 import {Button} from './Button';
 import styled, {css} from 'styled-components';
+import {NavLink} from 'react-router-dom';
+import Auth from '../utils/auth';
 
 export const Header = styled.header`
 	border-radius: 3px;
 	border-bottom: 2px solid var(--Gainsboro);
 	background: var(--Green);
-	padding: 0.25rem 1rem;
+	padding: 1rem 1rem;
 	display: flex;
 	min-width: 3rem;
 	font-size: 0.6rem;
@@ -19,12 +21,14 @@ export const H1 = styled.h1`
 	font-size: 2.5rem;
 	color: var(--Purple);
 	margin: 0.5rem;
+	margin-right: 1rem;
 `;
 
 export const YourList = styled.div`
 	@media (min-width: 1020px) {
 		display: flex;
 		flex-direction: row-reverse;
+		align-items: end;
 	}
 `;
 
@@ -32,15 +36,29 @@ export default function Nav() {
 	return (
 		<Header>
 			<YourList>
-				<Button secondary>your lists</Button>
-				<Button secondary>logout</Button>
+				{/* if user is logged in show saved books and logout */}
+				{Auth.loggedIn() ? (
+					<div>
+						<NavLink to="/" exact="true">
+							<Button>your lists</Button>
+						</NavLink>
+						<NavLink onClick={Auth.logout} to="/login" exact="true">
+							<Button style={{margin: '0 0 1rem 1.5rem'}}>logout</Button>
+						</NavLink>
+					</div>
+				) : (
+					<div>
+						<NavLink to="/signup" exact="true">
+							<Button>Signup</Button>
+						</NavLink>
+						<NavLink to="/login" exact="true">
+							<Button style={{margin: '0 0 1rem 1.5rem'}}>Login</Button>
+						</NavLink>
+					</div>
+				)}
 				<H1>Shopping List</H1>
 			</YourList>
-			<img
-				className="profilePic"
-				src={profilePic}
-				alt="users profile picture"
-			></img>
+			<img className="avocado" src={avocado} alt="avocado"></img>
 		</Header>
 	);
 }

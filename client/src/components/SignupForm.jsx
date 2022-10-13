@@ -23,7 +23,7 @@ const SignupForm = () => {
 	// set state for alert
 	// const [showAlert, setShowAlert] = useState(false); //BOOTSTRAP - NEED TO CONVERT
 
-	const [addUser] = useMutation(ADD_USER);
+	const [addUser, args] = useMutation(ADD_USER);
 
 	const handleInputChange = (event) => {
 		const {name, value} = event.target;
@@ -66,9 +66,7 @@ const SignupForm = () => {
 			</H3>
 			<H3>Already have an account?</H3>
 			<NavLink to="/login" exact="true">
-				<Button style={{margin: '0 0 1rem 1.5rem'}} primary>
-					Login
-				</Button>
+				<Button style={{margin: '0 0 1rem 1.5rem'}}>Login</Button>
 			</NavLink>
 			<Form onSubmit={handleFormSubmit}>
 				<Input
@@ -95,9 +93,7 @@ const SignupForm = () => {
 					name="password"
 					required
 				/>
-				<Button primary type="submit">
-					Signup
-				</Button>
+				<Button type="submit">Signup</Button>
 			</Form>
 		</>
 	);

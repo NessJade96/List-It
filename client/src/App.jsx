@@ -17,7 +17,7 @@ import LoginForm from './components/loginForm';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
-	uri: '/graphql',
+	uri: 'http://localhost:3001/graphql',
 	cache: new InMemoryCache(),
 });
 

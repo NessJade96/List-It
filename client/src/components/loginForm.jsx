@@ -39,7 +39,7 @@ const LoginForm = () => {
 
 			Auth.login(res.data.login.token);
 		} catch (err) {
-			console.error(err);
+			console.error(err, 'ERROR logging in');
 			// setShowAlert(true);
 		}
 
@@ -55,26 +55,26 @@ const LoginForm = () => {
 			<H3 primary>Login to List It!</H3>
 			<H3>Don't have an account?</H3>
 			<NavLink to="/signup" exact="true">
-				<Button style={{margin: '0 0 1rem 1.5rem'}} primary>
-					Signup
-				</Button>
+				<Button style={{margin: '0 0 1rem 1.5rem'}}>Signup</Button>
 			</NavLink>
-			<Form>
+			<Form onSubmit={handleFormSubmit}>
 				<Input
 					type="email"
 					placeholder="Enter your email"
-					// value={email}
+					value={userFormData.email}
+					onChange={handleInputChange}
 					name="email"
 					required
 				/>
 				<Input
 					type="password"
 					placeholder="Enter a password?"
-					// value={password}
+					onChange={handleInputChange}
+					value={userFormData.password}
 					name="password"
 					required
 				/>
-				<Button primary>Login</Button>
+				<Button type="submit">Login</Button>
 			</Form>
 		</>
 	);

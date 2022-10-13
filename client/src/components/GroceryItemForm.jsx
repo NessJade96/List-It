@@ -4,6 +4,8 @@ import {Input} from './Input';
 import {Button} from './Button';
 import {H3} from './H3';
 
+import {useQuery} from '@apollo/client';
+
 export default function GroceryItemForm(props) {
 	const [text, setText] = useState(props.edit?.text ?? '');
 	const [amount, setAmount] = useState(props.edit?.amount ?? '');
@@ -61,7 +63,7 @@ export default function GroceryItemForm(props) {
 					name="measurement"
 					onChange={handleChange}
 				/>
-				<Button primary>Add list item</Button>
+				<Button>Add list item</Button>
 			</Form>
 		</div>
 	) : (
@@ -91,7 +93,7 @@ export default function GroceryItemForm(props) {
 					name="measurement"
 					onChange={handleChange}
 				/>
-				<Button primary>Update</Button>
+				<Button>Update</Button>
 			</Form>
 		</div>
 	);
