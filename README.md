@@ -93,6 +93,7 @@ Colorpallet from Coolors:
 13. Imported the apollo client, auth, and react-router-dom. Implimented the functions for auth, and updated the App() function with the React Router and ApolloProvider. Changed styling on H3 component. Lastly, implemented navigation between the signup page and login pages.
 
 14. Changed the uri in App.js to 'http://localhost:3001/graphql' so the frontend calls actually reach graphql. Updated some button styling. The login and Signup user work perfectly now. You can navigate between pages smoothly. Removed the profile picture because I decided I will add that in at the end if I have time as it does not meet MVP.
+    ![signup](./assets/Signup%20page.jpg)
 
 Thank you, Vanessa Bloom <(^.^)>
 
