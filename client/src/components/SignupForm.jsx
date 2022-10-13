@@ -65,7 +65,7 @@ const SignupForm = () => {
 				below:
 			</H3>
 			<H3>Already have an account?</H3>
-			<NavLink to="/login" exact>
+			<NavLink to="/login" exact="true">
 				<Button style={{margin: '0 0 1rem 1.5rem'}} primary>
 					Login
 				</Button>
@@ -77,6 +77,7 @@ const SignupForm = () => {
 					value={userFormData.username}
 					name="username"
 					onChange={handleInputChange}
+					required
 				/>
 				<Input
 					type="email"
@@ -84,6 +85,7 @@ const SignupForm = () => {
 					value={userFormData.email}
 					onChange={handleInputChange}
 					name="email"
+					required
 				/>
 				<Input
 					type="password"
@@ -91,8 +93,11 @@ const SignupForm = () => {
 					onChange={handleInputChange}
 					value={userFormData.password}
 					name="password"
+					required
 				/>
-				<Button primary>Signup</Button>
+				<Button primary type="submit">
+					Signup
+				</Button>
 			</Form>
 		</>
 	);

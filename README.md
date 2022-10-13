@@ -90,7 +90,9 @@ Colorpallet from Coolors:
 
 12. Created the loginForm and SignupForm components and began styling. I have imported all main components to the App.js. I later will create functions to conditionally render each component depending if the user is logged in, etc.
 
-13.
+13. Imported the apollo client, auth, and react-router-dom. Implimented the functions for auth, and updated the App() function with the React Router and ApolloProvider. Changed styling on H3 component. Lastly, implemented navigation between the signup page and login pages.
+
+14.
 
 Thank you, Vanessa Bloom <(^.^)>
 

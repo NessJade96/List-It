@@ -54,7 +54,7 @@ const LoginForm = () => {
 		<>
 			<H3 primary>Login to List It!</H3>
 			<H3>Don't have an account?</H3>
-			<NavLink to="/signup" exact>
+			<NavLink to="/signup" exact="true">
 				<Button style={{margin: '0 0 1rem 1.5rem'}} primary>
 					Signup
 				</Button>
@@ -65,12 +65,14 @@ const LoginForm = () => {
 					placeholder="Enter your email"
 					// value={email}
 					name="email"
+					required
 				/>
 				<Input
 					type="password"
 					placeholder="Enter a password?"
 					// value={password}
 					name="password"
+					required
 				/>
 				<Button primary>Login</Button>
 			</Form>
