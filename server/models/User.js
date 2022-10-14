@@ -1,6 +1,8 @@
 const {Schema, model} = require('mongoose');
 const bcrypt = require('bcrypt');
 
+const GroceryList = require('./GroceryList');
+
 const userSchema = new Schema(
 	{
 		username: {
@@ -18,6 +20,7 @@ const userSchema = new Schema(
 			type: String,
 			required: true,
 		},
+		savedGroceryLists: [GroceryList.schema],
 	},
 	// set this to use virtual below
 	{

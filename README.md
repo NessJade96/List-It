@@ -1,15 +1,18 @@
-# Project-3 -- List It
+# List It
 
 ## Description:
 
-This is not just any shopping list, this shopping list is also a MERN PWA and is downloadable to your mobile and computer devices. This application is fast, reliable, and works offline. Dynamic frontend created with React.
-// COME BACK TO THIS AND WRITE MORE!
+-With PWA
+This is not just any shopping list, this shopping list is also a MERN PWA and is downloadable to your mobile and computer devices. This application is fast, reliable, and works offline. This is a dynamic application created with Mongodb, Express, React, and Node.
+
+-Without PWA
+This shopping list application is a dynamic application created with Mongodb, Express, React, and Node. The user is able to create an account, and access their saved shopping lists from anywhere!
 
 ## User Setup: // need to udpate!
 
-To use this at home, in your terminal run the following commands to invoke the application:
+To use this at home, in the root folder, run in your terminal the following commands to invoke the application:
 `npm i` to install packages,
-then `npm run start` starts the live server.
+then `npm run develop` starts the live servers.
 
 ## User Story
 
@@ -33,7 +36,7 @@ SO THAT I can retrieve for later use at the supermarket
 
 ## Technologies used:
 
-Vite for React, HTML, CSS, Styled-Components, Babel-plugin-styled-components,
+Vite for React, HTML, CSS, Styled-Components, Babel-plugin-styled-components, Apollo, GraphQL, bcrypt, express, JWT, mongoose, nodemon, react-dom, react-router-dom, Vite,
 
 ## Links:
 
@@ -47,8 +50,9 @@ Vite for React, HTML, CSS, Styled-Components, Babel-plugin-styled-components,
 - Create wireframe concept of mobile, tablet, and desktop.
   -media queries: Mobile 320px - 480px, Tablet 481px - 1024px, PC 1025+px
 - Create user login/signup page or model
-  - link this to user signup (mutations/querires)
+  - link this to user signup (mutations/queries)
 - Setup React, src code etc. Client and Server
+  - Create Users and grocery item lists in database.
 - Set up configs for PWA's (using Babel and Webpack) (Will do after MVP)
 
 Colorpallet from Coolors:
@@ -94,6 +98,17 @@ Colorpallet from Coolors:
 
 14. Changed the uri in App.js to 'http://localhost:3001/graphql' so the frontend calls actually reach graphql. Updated some button styling. The login and Signup user work perfectly now. You can navigate between pages smoothly. Removed the profile picture because I decided I will add that in at the end if I have time as it does not meet MVP.
     ![signup](./assets/Signup%20page.jpg)
+
+15. Wrote queries and mutations for GET_USER, and added AddGroceryList model, updated typeDefs, resolver, and mutation. Updated the GroceryItem, and User Model. Lastly created a new more mutations in the TypeDefs for the requests to make next.
+
+Todo:
+
+    // list model to have field for users, as an array of users that can access the list
+    // handle permissions on frontend
+
+// create an input field on list page where you can add a friends username - this will add to the grocerylist array of users.
+
+// show what users are on this list - render to the screen
 
 Thank you, Vanessa Bloom <(^.^)>
 

@@ -5,20 +5,32 @@ const typeDefs = gql`
 		_id: ID!
 		username: String!
 		email: String!
+		savedGroceryLists: [GroceryList]
 	}
 
-	type GroceryListItem {
-		_id: ID!
+	type GroceryItem {
+		_id: ID
 		itemName: String!
 		amount: Int
 		measurement: String
 	}
 
-	input GroceryListItemInput {
+	type GroceryList {
+		_id: ID
+		listName: String!
+		users: [User]
+		groceryItems: [GroceryItem]
+	}
+
+	input UserInput {
 		_id: ID!
-		itemName: String!
-		amount: Int
-		measurement: String
+		username: String!
+		email: String!
+	}
+
+	input GroceryListInput {
+		listName: String!
+		users: [UserInput!]
 	}
 
 	type Auth {
@@ -28,16 +40,24 @@ const typeDefs = gql`
 
 	type Query {
 		me: User
+		listItems: [GroceryList]
 	}
 
 	type Mutation {
+		addUser(username: String!, email: String!, password: String!): Auth
 		login(email: String!, password: String!): Auth
 
-		addUser(username: String!, email: String!, password: String!): Auth
+		addGroceryList(input: GroceryListInput!): GroceryList
+		updateGroceryList(_id: ID, listName: String!): GroceryList
+		removeGroceryList(_id: ID): User
 
-		addListItem(input: GroceryListItemInput): User
-
-		removeListItem(_id: ID!): User
+		addGroceryItem(listName: String!): User
+		updateGroceryItem(
+			itemName: String!
+			amount: Int
+			measurement: String
+		): GroceryItem
+		removeGroceryItem(_id: ID): User
 	}
 `;
 

@@ -22,3 +22,33 @@ export const LOGIN_USER = gql`
 		}
 	}
 `;
+
+export const ADD_GROCERY_LIST = gql`
+	mutation AddGroceryList($input: GroceryListInput!) {
+		addGroceryList(input: $input) {
+			listName
+			users {
+				username
+				_id
+			}
+		}
+	}
+`;
+
+// export const ADD_GROCERY_ITEM = gql`
+// addGroceryItem(input: $addGroceryItemInput) {
+//   username
+//   email
+//   savedGroceryLists {
+//     groceryItems {
+// 			_id
+//       itemName
+//       amount
+//       measurement
+//     }
+//     users {
+//       username
+//     }
+//   }
+// }
+// }`;
