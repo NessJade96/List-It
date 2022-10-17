@@ -101,13 +101,16 @@ Colorpallet from Coolors:
 
 15. Wrote queries and mutations for GET_USER, and added AddGroceryList model, updated typeDefs, resolver, and mutation. Updated the GroceryItem, and User Model. Lastly created a new more mutations in the TypeDefs for the requests to make next.
 
+16. Made it so that the GroceryList model to has a key for users, as an array of users that have access to the list. (handle permissions on frontend)
+
+17. The addGroceryItems resolver was created and users can now create grocery lists and add items to that list.
+
+18. work on the update and remove mutations for lists and items.
+
 Todo:
-
-    // list model to have field for users, as an array of users that can access the list
-    // handle permissions on frontend
-
+// add the update and remove mutations for lists and items.
+// work on frontend visuals
 // create an input field on list page where you can add a friends username - this will add to the grocerylist array of users.
-
 // show what users are on this list - render to the screen
 
 Thank you, Vanessa Bloom <(^.^)>

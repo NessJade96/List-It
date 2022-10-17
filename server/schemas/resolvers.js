@@ -4,6 +4,17 @@ const {signToken} = require('../utils/auth');
 const {AuthenticationError} = require('apollo-server-express');
 
 const resolvers = {
+	// GroceryList: {
+	// 	groceryItems: async (groceryList) => {
+	// 		return (await groceryList.populate('groceryItems').execPopulate())
+	// 			.groceryItems;
+	// 	},
+	// },
+	// createItem: async (_, args)=>{
+	//   try{
+	//     const groceryList = await GroceryList.findById()
+	//   }
+	// }
 	Query: {
 		// Get a single user by thier id or username
 		me: async (parent, args, context) => {
@@ -16,11 +27,17 @@ const resolvers = {
 			throw new AuthenticationError('You need to be logged in!');
 		},
 		// Grocery List with grocery items
-		listItems: async () => {
-			return await Category.find();
-		},
+		// listItems: async () => {
+		// 	return await User.find();
+		// },
 	},
 	Mutation: {
+		// Creates a user, sign a token, and send it back
+		addUser: async (parent, {username, email, password}) => {
+			const user = await User.create({username, email, password});
+			const token = signToken(user);
+			return {token, user};
+		},
 		// Login a user, sign a token, and send it back
 		login: async (parent, {email, password}) => {
 			const user = await User.findOne({email});
@@ -34,23 +51,20 @@ const resolvers = {
 			const token = signToken(user);
 			return {token, user};
 		},
-		// Creates a user, sign a token, and send it back
-		addUser: async (parent, {username, email, password}) => {
-			const user = await User.create({username, email, password});
-			const token = signToken(user);
-			return {token, user};
-		},
-		// save a grocery item to a users 'savedGroceryItems' field by adding it to the set (this prevents duplicates)
+		// save a grocery item to a 'grocerylist' by adding it to the set
 		addGroceryItem: async (parent, args, context) => {
 			if (context.user) {
-				const groceryItem = new GroceryItem({args});
+				const {groceryListId, ...input} = args.input;
 
-				await User.findByIdAndUpdate(
-					{_id: context.user._id},
-					{$push: {groceryItems: groceryItem}},
+				const groceryItem = new GroceryItem(input);
+
+				const updateList = await User.findOneAndUpdate(
+					{_id: context.user._id, 'savedGroceryLists._id': groceryListId},
+					{$push: {'savedGroceryLists.$.groceryItems': groceryItem}},
 					{new: true, runValidators: true}
 				);
-				return groceryItem;
+
+				return updateList;
 			}
 			throw new AuthenticationError('No user found to add a grocery list');
 		},
@@ -70,24 +84,17 @@ const resolvers = {
 		// 	}
 		// 	throw new AuthenticationError('No Groceries under this Id to remove');
 		// },
-		// save a grocery item to a users 'savedGroceryItems' field by adding it to the set (this prevents duplicates)
+		// save a grocery item to a users 'savedGroceryItems' field by adding it to the set
 		addGroceryList: async (parent, args, context) => {
-			console.log(
-				'🚀 ~ file: resolvers.js ~ line 75 ~ addGroceryList: ~ args',
-				args.input.users
-			);
 			if (context.user) {
 				const groceryList = new GroceryList(args.input);
-				console.log(
-					'🚀 ~ file: resolvers.js ~ line 81 ~ addGroceryList: ~ groceryList',
-					groceryList
-				);
 
 				await User.findByIdAndUpdate(
 					{_id: context.user._id},
 					{$push: {savedGroceryLists: groceryList}},
 					{new: true, runValidators: true}
 				);
+
 				return groceryList;
 			}
 			throw new AuthenticationError('No user found to update grocery list');

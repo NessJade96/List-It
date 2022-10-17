@@ -33,6 +33,13 @@ const typeDefs = gql`
 		users: [UserInput!]
 	}
 
+	input GroceryItemInput {
+		groceryListId: String!
+		itemName: String!
+		amount: Int
+		measurement: String
+	}
+
 	type Auth {
 		token: ID!
 		user: User
@@ -51,7 +58,7 @@ const typeDefs = gql`
 		updateGroceryList(_id: ID, listName: String!): GroceryList
 		removeGroceryList(_id: ID): User
 
-		addGroceryItem(listName: String!): User
+		addGroceryItem(input: GroceryItemInput!): User
 		updateGroceryItem(
 			itemName: String!
 			amount: Int

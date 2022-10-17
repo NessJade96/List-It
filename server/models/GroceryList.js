@@ -1,5 +1,7 @@
 const {Schema, model} = require('mongoose');
 
+const GroceryItem = require('./GroceryItem');
+
 const userSchema = new Schema({
 	_id: {
 		type: String,
@@ -25,12 +27,7 @@ const GroceryListSchema = new Schema({
 		trim: true,
 	},
 	users: [userSchema],
-	groceryItems: [
-		{
-			type: Schema.Types.ObjectId,
-			ref: 'GroceryItemSchema',
-		},
-	],
+	groceryItems: [GroceryItem.schema],
 });
 
 const GroceryList = model('GroceryList', GroceryListSchema);
