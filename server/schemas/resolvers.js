@@ -52,7 +52,7 @@ const resolvers = {
 			return {token, user};
 		},
 		// save a grocery item to a 'grocerylist' by adding it to the set
-		addGroceryItem: async (parent, args, context) => {
+		addGroceryItem: async (_, args, context) => {
 			if (context.user) {
 				const {groceryListId, ...input} = args.input;
 
@@ -69,21 +69,23 @@ const resolvers = {
 			throw new AuthenticationError('No user found to add a grocery list');
 		},
 		// remove a grocery item from `savedGroceryItems`
-		// removeGroceryItem: async (parent, {_id}, context) => {
-		// 	const groceryId = _id;
-		// 	if (context.user) {
-		// 		const userGroceries = User.findOneAndUpdate(
-		// 			{_id: context.user._id},
-		// 			{$pull: {savedGroceryLists: {groceryId}}},
-		// 			{new: true}
-		// 		);
-		// 		return (
-		// 			console.log('Grocery item removed from savedGroceryItems'),
-		// 			userGroceries
-		// 		);
-		// 	}
-		// 	throw new AuthenticationError('No Groceries under this Id to remove');
-		// },
+		removeGroceryItem: async (_, args, context) => {
+			console.log(args);
+			if (context.user) {
+				const {groceryListId, _id} = args;
+
+				const userGroceries = await User.findOneAndUpdate(
+					{
+						_id: context.user._id,
+						'savedGroceryLists._id': groceryListId,
+					},
+					{$pull: {'savedGroceryLists.$.groceryItems': {_id}}}
+				);
+				console.log(userGroceries, 'userGroceries');
+				return console.log('Grocery item removed from the list'), userGroceries;
+			}
+			throw new AuthenticationError('No Groceries under this Id to remove');
+		},
 		// save a grocery item to a users 'savedGroceryItems' field by adding it to the set
 		addGroceryList: async (parent, args, context) => {
 			if (context.user) {

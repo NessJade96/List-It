@@ -64,7 +64,7 @@ const typeDefs = gql`
 			amount: Int
 			measurement: String
 		): GroceryItem
-		removeGroceryItem(_id: ID): User
+		removeGroceryItem(_id: ID!, groceryListId: String!): User
 	}
 `;
 
