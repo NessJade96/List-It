@@ -71,7 +71,7 @@ const resolvers = {
 			}
 			throw new AuthenticationError('No Groceries under this Id to remove');
 		},
-		// save a grocery item to a users 'savedGroceryItems' field by adding it to the set
+		// save a groceryList to a users 'savedGroceryLists' field by adding it to the set
 		addGroceryList: async (_, args, context) => {
 			if (context.user) {
 				const groceryList = new GroceryList(args.input);
@@ -86,10 +86,22 @@ const resolvers = {
 			}
 			throw new AuthenticationError('No user found to update grocery list');
 		},
+		//BELOW FUNCTION DOESNT WORK
+		// Update the groceryList so users can add other users to the groceryList
+		// updateGroceryList: async (_, args, context) => {
+		// 	if (context.user) {
+		// 		const {groceryListId, newUsersId} = args.input;
+
+		// 		const groceryList = User.findOneAndUpdate(
+		// 			{_id: context.user.id, 'savedGroceryLists._id': groceryListId},
+		// 			{$push: {'savedGroceryLists.$.users': newUsersId}}
+		// 		);
+		// 		return groceryList; //Returns Null :(
+		// 	}
+		// 	throw new AuthenticationError('Something went wrong :(');
+		// },
 		// remove a groceryList from `savedGroceryLists`
 		removeGroceryList: async (_, {_id}, context) => {
-			console.log(context.user, 'context.user');
-			console.log(_id, '_id');
 			if (context.user) {
 				const userGroceries = User.findOneAndUpdate(
 					{_id: context.user._id},

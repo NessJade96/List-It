@@ -33,6 +33,11 @@ const typeDefs = gql`
 		users: [UserInput!]
 	}
 
+	input UpdateGrocerylistInput {
+		groceryListId: String!
+		newUsersId: String!
+	}
+
 	input GroceryItemInput {
 		groceryListId: String!
 		itemName: String!
@@ -55,7 +60,7 @@ const typeDefs = gql`
 		login(email: String!, password: String!): Auth
 
 		addGroceryList(input: GroceryListInput!): GroceryList
-		updateGroceryList(_id: ID, listName: String!): GroceryList
+		updateGroceryList(input: UpdateGrocerylistInput!): GroceryList
 		removeGroceryList(_id: ID): User
 
 		addGroceryItem(input: GroceryItemInput!): User
