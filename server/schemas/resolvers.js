@@ -4,20 +4,9 @@ const {signToken} = require('../utils/auth');
 const {AuthenticationError} = require('apollo-server-express');
 
 const resolvers = {
-	// GroceryList: {
-	// 	groceryItems: async (groceryList) => {
-	// 		return (await groceryList.populate('groceryItems').execPopulate())
-	// 			.groceryItems;
-	// 	},
-	// },
-	// createItem: async (_, args)=>{
-	//   try{
-	//     const groceryList = await GroceryList.findById()
-	//   }
-	// }
 	Query: {
 		// Get a single user by thier id or username
-		me: async (parent, args, context) => {
+		me: async (_, args, context) => {
 			if (context.user) {
 				const userInfo = await User.findOne({_id: context.user._id}).select(
 					'-__v -password'
@@ -26,20 +15,16 @@ const resolvers = {
 			}
 			throw new AuthenticationError('You need to be logged in!');
 		},
-		// Grocery List with grocery items
-		// listItems: async () => {
-		// 	return await User.find();
-		// },
 	},
 	Mutation: {
 		// Creates a user, sign a token, and send it back
-		addUser: async (parent, {username, email, password}) => {
+		addUser: async (_, {username, email, password}) => {
 			const user = await User.create({username, email, password});
 			const token = signToken(user);
 			return {token, user};
 		},
 		// Login a user, sign a token, and send it back
-		login: async (parent, {email, password}) => {
+		login: async (_, {email, password}) => {
 			const user = await User.findOne({email});
 			if (!user) {
 				throw new AuthenticationError('Incorrect credentials');
@@ -87,7 +72,7 @@ const resolvers = {
 			throw new AuthenticationError('No Groceries under this Id to remove');
 		},
 		// save a grocery item to a users 'savedGroceryItems' field by adding it to the set
-		addGroceryList: async (parent, args, context) => {
+		addGroceryList: async (_, args, context) => {
 			if (context.user) {
 				const groceryList = new GroceryList(args.input);
 
@@ -101,21 +86,22 @@ const resolvers = {
 			}
 			throw new AuthenticationError('No user found to update grocery list');
 		},
-		// remove a grocery item from `savedGroceryLists`
-		// removeGroceryList: async (parent, {_id}, context) => {
-		// 	const groceryId = _id;
-		// 	if (context.user) {
-		// 		const userGroceries = User.findOneAndUpdate(
-		// 			{_id: context.user._id},
-		// 			{$pull: {savedGroceryLists: {groceryId}}},
-		// 			{new: true}
-		// 		);
-		// 		return (
-		// 			console.log('Book removed from savedGroceryLists'), userGroceries
-		// 		);
-		// 	}
-		// 	throw new AuthenticationError('No Groceries under this Id to remove');
-		// },
+		// remove a groceryList from `savedGroceryLists`
+		removeGroceryList: async (_, {_id}, context) => {
+			console.log(context.user, 'context.user');
+			console.log(_id, '_id');
+			if (context.user) {
+				const userGroceries = User.findOneAndUpdate(
+					{_id: context.user._id},
+					{$pull: {savedGroceryLists: {_id}}}
+				);
+				return (
+					console.log('GroceryList removed from savedGroceryLists'),
+					userGroceries
+				);
+			}
+			throw new AuthenticationError('No lists under this Id to remove');
+		},
 	},
 };
 

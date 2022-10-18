@@ -105,7 +105,7 @@ Colorpallet from Coolors:
 
 17. The addGroceryItems resolver was created and users can now create grocery lists and add items to that list.
 
-18. work on the update and remove mutations for lists and items.
+18. Created the update and remove mutations for lists and items.
 
 Todo:
 // add the update and remove mutations for lists and items.
