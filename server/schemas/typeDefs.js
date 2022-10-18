@@ -89,6 +89,7 @@ const typeDefs = gql`
 		removeGroceryItem(_id: ID!, groceryListId: String!): User
 
 		addNewGroceryList(input: NewGroceryListInput): NewGroceryList
+		addNewGroceryItem(input: GroceryItemInput!): NewGroceryList
 	}
 `;
 

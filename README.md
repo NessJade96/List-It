@@ -105,7 +105,7 @@ Colorpallet from Coolors:
 
 17. The addGroceryItems resolver was created and users can now create grocery lists and add items to that list.
 
-18. Created the update and remove mutations for lists and items.
+18. Realised I needed to refactor the collection models -> so all the queries and mutations are being created again for the new models.
 
 Todo:
 // add the update and remove mutations for lists and items.

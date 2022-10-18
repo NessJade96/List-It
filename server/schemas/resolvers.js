@@ -15,7 +15,7 @@ const resolvers = {
 		// Get a single user by thier id or username
 		me: async (_, args, context) => {
 			if (context.user) {
-				const userInfo = await User.findOne({_id: context.user._id}).select(
+				const userInfo = await NewUser.findOne({_id: context.user._id}).select(
 					'-__v -password'
 				);
 				return userInfo;
@@ -35,10 +35,6 @@ const resolvers = {
 		},
 		// Creates a groceryList
 		addNewGroceryList: async (_, args, context) => {
-			console.log(
-				'🚀 ~ file: resolvers.js ~ line 38 ~ addNewGroceryList: ~ args',
-				args
-			);
 			if (context.user) {
 				const groceryList = await NewGroceryList.create({
 					listName: args.input.listName,
@@ -73,6 +69,23 @@ const resolvers = {
 			}
 			const token = signToken(user);
 			return {token, user};
+		},
+		// save a new grocery item to a 'grocerylist' by adding it to the set
+		addNewGroceryItem: async (_, args, context) => {
+			if (context.user) {
+				const {groceryListId, ...input} = args.input;
+
+				const groceryItem = await NewGroceryItem.create(input);
+
+				const updateList = await NewGroceryList.findOneAndUpdate(
+					{_id: groceryListId},
+					{$push: {groceryItems: groceryItem}},
+					{new: true, runValidators: true}
+				).populate('groceryItems');
+
+				return updateList;
+			}
+			throw new AuthenticationError('No user found to add a grocery list');
 		},
 		// save a grocery item to a 'grocerylist' by adding it to the set
 		addGroceryItem: async (_, args, context) => {
