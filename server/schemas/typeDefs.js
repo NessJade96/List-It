@@ -45,6 +45,16 @@ const typeDefs = gql`
 		measurement: String
 	}
 
+	input NewGroceryListInput {
+		listName: String!
+	}
+
+	type NewGroceryList {
+		listName: String!
+		user: [User]
+		groceryItems: [GroceryItem]
+	}
+
 	type Auth {
 		token: ID!
 		user: User
@@ -70,6 +80,8 @@ const typeDefs = gql`
 			measurement: String
 		): GroceryItem
 		removeGroceryItem(_id: ID!, groceryListId: String!): User
+
+		addNewGroceryList(input: NewGroceryListInput): NewGroceryList
 	}
 `;
 

@@ -1,4 +1,11 @@
-const {User, GroceryItem, GroceryList} = require('../models');
+const {
+	User,
+	GroceryItem,
+	GroceryList,
+	NewUser,
+	NewGroceryList,
+	NewGroceryItem,
+} = require('../models');
 // import sign token function from auth
 const {signToken} = require('../utils/auth');
 const {AuthenticationError} = require('apollo-server-express');
@@ -19,13 +26,48 @@ const resolvers = {
 	Mutation: {
 		// Creates a user, sign a token, and send it back
 		addUser: async (_, {username, email, password}) => {
-			const user = await User.create({username, email, password});
-			const token = signToken(user);
-			return {token, user};
+			// const user = await User.create({username, email, password});
+			// const token = signToken(user);
+			// return {token, user};
+			const newUser = await NewUser.create({username, email, password});
+			const token = signToken(newUser);
+			return {token, newUser};
+		},
+		// Creates a groceryList
+		addNewGroceryList: async (_, args, context) => {
+			console.log(
+				'🚀 ~ file: resolvers.js ~ line 38 ~ addNewGroceryList: ~ args',
+				args
+			);
+			if (context.user) {
+				const groceryList = NewGroceryList.create({
+					listName: args.input.listName,
+					users: [context.user._id],
+					groceryItems: [],
+				});
+				console.log(
+					'🚀 ~ file: resolvers.js ~ line 44 ~ addNewGroceryList: ~ groceryList',
+					groceryList
+				);
+
+				const foo = await User.findByIdAndUpdate(
+					{_id: context.user._id},
+					{$push: {savedGroceryLists: groceryList._id}},
+					{new: true, runValidators: true}
+				);
+				console.log(
+					'🚀 ~ file: resolvers.js ~ line 51 ~ addNewGroceryList: ~ foo',
+					foo
+				);
+
+				return {...groceryList, users: [foo]};
+			}
+			throw new AuthenticationError('No user found to update grocery list');
 		},
 		// Login a user, sign a token, and send it back
 		login: async (_, {email, password}) => {
-			const user = await User.findOne({email});
+			// const user = await User.findOne({email});
+			const user = await NewUser.findOne({email});
 			if (!user) {
 				throw new AuthenticationError('Incorrect credentials');
 			}
