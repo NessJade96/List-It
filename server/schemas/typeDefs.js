@@ -45,13 +45,20 @@ const typeDefs = gql`
 		measurement: String
 	}
 
+	type NewUser {
+		_id: ID!
+		username: String!
+		email: String!
+		savedGroceryLists: [ID!]
+	}
+
 	input NewGroceryListInput {
 		listName: String!
 	}
 
 	type NewGroceryList {
 		listName: String!
-		user: [User]
+		user: [NewUser]
 		groceryItems: [GroceryItem]
 	}
 

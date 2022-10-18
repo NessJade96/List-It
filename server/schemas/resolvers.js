@@ -40,27 +40,23 @@ const resolvers = {
 				args
 			);
 			if (context.user) {
-				const groceryList = NewGroceryList.create({
+				const groceryList = await NewGroceryList.create({
 					listName: args.input.listName,
 					users: [context.user._id],
 					groceryItems: [],
 				});
-				console.log(
-					'🚀 ~ file: resolvers.js ~ line 44 ~ addNewGroceryList: ~ groceryList',
-					groceryList
-				);
 
-				const foo = await User.findByIdAndUpdate(
+				const updatedUser = await NewUser.findByIdAndUpdate(
 					{_id: context.user._id},
 					{$push: {savedGroceryLists: groceryList._id}},
 					{new: true, runValidators: true}
 				);
-				console.log(
-					'🚀 ~ file: resolvers.js ~ line 51 ~ addNewGroceryList: ~ foo',
-					foo
-				);
 
-				return {...groceryList, users: [foo]};
+				return {
+					listName: groceryList.listName,
+					user: [updatedUser],
+					groceryItems: groceryList.groceryItems,
+				};
 			}
 			throw new AuthenticationError('No user found to update grocery list');
 		},

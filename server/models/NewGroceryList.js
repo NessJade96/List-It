@@ -20,7 +20,7 @@ const {Schema, model} = require('mongoose');
 // 	},
 // });
 
-const NewGroceryListSchema = new Schema({
+const newGroceryListSchema = new Schema({
 	listName: {
 		type: String,
 		required: true,
@@ -40,6 +40,6 @@ const NewGroceryListSchema = new Schema({
 	],
 });
 
-const NewGroceryList = model('NewGroceryList', NewGroceryListSchema);
+const NewGroceryList = model('NewGroceryList', newGroceryListSchema);
 
 module.exports = NewGroceryList;
