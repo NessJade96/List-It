@@ -90,6 +90,7 @@ const typeDefs = gql`
 
 		addNewGroceryList(input: NewGroceryListInput): NewGroceryList
 		addNewGroceryItem(input: GroceryItemInput!): NewGroceryList
+		removeNewGroceryItem(_id: ID!, groceryListId: String!): NewGroceryList
 	}
 `;
 
