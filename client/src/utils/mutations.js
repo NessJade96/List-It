@@ -80,3 +80,70 @@ export const REMOVE_GROCERY_ITEM = gql`
 		}
 	}
 `;
+
+export const ADD_NEW_GROCERY_LIST = gql`
+	mutation AddNewGroceryList($addNewGroceryListInput: NewGroceryListInput) {
+		addNewGroceryList(input: $addNewGroceryListInput) {
+			listName
+			user {
+				_id
+				username
+				email
+				savedGroceryLists
+			}
+			groceryItems {
+				_id
+				itemName
+				amount
+				measurement
+			}
+		}
+	}
+`;
+
+export const ADD_NEW_GROCERY_ITEM = gql`
+	mutation AddNewGroceryItem($addNewGroceryItemInput: GroceryItemInput!) {
+		addNewGroceryItem(input: $addNewGroceryItemInput) {
+			listName
+			groceryItems {
+				_id
+				itemName
+				amount
+				measurement
+			}
+		}
+	}
+`;
+
+export const REMOVE = gql`
+	mutation RemoveNewGroceryItem(
+		$removeNewGroceryItemId: ID!
+		$removeNewGroceryItemGroceryListId: String!
+	) {
+		removeNewGroceryItem(
+			_id: $removeNewGroceryItemId
+			groceryListId: $removeNewGroceryItemGroceryListId
+		) {
+			listName
+			user {
+				_id
+				username
+				email
+			}
+			groceryItems {
+				_id
+				itemName
+				amount
+				measurement
+			}
+		}
+	}
+`;
+
+export const REMOVE_NEW_GROCERY_LIST = gql`
+	mutation RemoveNewGroceryList($removeNewGroceryListId: String!) {
+		removeNewGroceryList(_id: $removeNewGroceryListId) {
+			listName
+		}
+	}
+`;

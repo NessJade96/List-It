@@ -176,6 +176,17 @@ const resolvers = {
 			}
 			throw new AuthenticationError('No lists under this Id to remove');
 		},
+		// remove the Newgrocery list
+		removeNewGroceryList: async (_, {_id}, context) => {
+			if (context.user) {
+				const groceryList = await NewGroceryList.findOneAndRemove({
+					_id: _id,
+				});
+				console.log(groceryList, 'groceryList');
+				return console.log('Grocery item removed from the list'), groceryList;
+			}
+			throw new AuthenticationError('No Groceries under this Id to remove');
+		},
 	},
 };
 
