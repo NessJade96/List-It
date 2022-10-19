@@ -105,10 +105,10 @@ Colorpallet from Coolors:
 
 17. The addGroceryItems resolver was created and users can now create grocery lists and add items to that list.
 
-18. Realised I needed to refactor the collection models -> so all the queries and mutations are being created again for the new models.
+18. Realised I needed to refactor the collection models -> so all the queries and mutations were created again for the new models and a code tidyup was completed.
 
 Todo:
-// add the update and remove mutations for lists and items.
+
 // work on frontend visuals
 // create an input field on list page where you can add a friends username - this will add to the grocerylist array of users.
 // show what users are on this list - render to the screen

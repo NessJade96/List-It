@@ -5,7 +5,7 @@ const typeDefs = gql`
 		_id: ID!
 		username: String!
 		email: String!
-		savedGroceryLists: [GroceryList]
+		savedGroceryLists: [ID!]
 	}
 
 	type GroceryItem {
@@ -15,15 +15,7 @@ const typeDefs = gql`
 		measurement: String
 	}
 
-	type NewGroceryItem {
-		_id: ID
-		itemName: String!
-		amount: Int
-		measurement: String
-	}
-
 	type GroceryList {
-		_id: ID
 		listName: String!
 		users: [User]
 		groceryItems: [GroceryItem]
@@ -35,14 +27,9 @@ const typeDefs = gql`
 		email: String!
 	}
 
-	input GroceryListInput {
-		listName: String!
-		users: [UserInput!]
-	}
-
 	input UpdateGrocerylistInput {
 		groceryListId: String!
-		newUsersId: String!
+		usersId: String!
 	}
 
 	input UpdateGroceryItemInput {
@@ -60,21 +47,8 @@ const typeDefs = gql`
 		measurement: String
 	}
 
-	type NewUser {
-		_id: ID!
-		username: String!
-		email: String!
-		savedGroceryLists: [ID!]
-	}
-
-	input NewGroceryListInput {
+	input GroceryListInput {
 		listName: String!
-	}
-
-	type NewGroceryList {
-		listName: String!
-		users: [NewUser]
-		groceryItems: [GroceryItem]
 	}
 
 	type Auth {
@@ -84,26 +58,22 @@ const typeDefs = gql`
 
 	type Query {
 		me: User
-		listItems: [GroceryList]
+		groceryList(_id: ID!): GroceryList
+		groceryItem(_id: ID!): GroceryItem
 	}
 
 	type Mutation {
 		addUser(username: String!, email: String!, password: String!): Auth
 		login(email: String!, password: String!): Auth
 
-		addGroceryList(input: GroceryListInput!): GroceryList
-		UUupdateGroceryList(input: UpdateGrocerylistInput!): GroceryList
-		removeGroceryList(_id: ID): User
+		addGroceryList(input: GroceryListInput): GroceryList
+		addGroceryItem(input: GroceryItemInput!): GroceryList
 
-		addGroceryItem(input: GroceryItemInput!): User
-		removeGroceryItem(_id: ID!, groceryListId: String!): User
+		removeGroceryItem(_id: ID!, groceryListId: String!): GroceryList
+		removeGroceryList(_id: String!): GroceryList
 
-		addNewGroceryList(input: NewGroceryListInput): NewGroceryList
-		addNewGroceryItem(input: GroceryItemInput!): NewGroceryList
-		removeNewGroceryItem(_id: ID!, groceryListId: String!): NewGroceryList
-		removeNewGroceryList(_id: String!): NewGroceryList
-		updateGroceryList(input: UpdateGrocerylistInput!): NewGroceryList
-		updateNewGroceryItem(input: UpdateGroceryItemInput!): NewGroceryItem
+		updateGroceryList(input: UpdateGrocerylistInput!): GroceryList
+		updateGroceryItem(input: UpdateGroceryItemInput!): GroceryItem
 	}
 `;
 

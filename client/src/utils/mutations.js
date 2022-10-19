@@ -1,6 +1,5 @@
 import {gql} from '@apollo/client';
 
-// USER MUTATIONS
 export const ADD_USER = gql`
 	mutation Mutation($username: String!, $email: String!, $password: String!) {
 		addUser(username: $username, email: $email, password: $password) {
@@ -24,125 +23,56 @@ export const LOGIN_USER = gql`
 	}
 `;
 
-// GROCERY LIST MUTATIONS
 export const ADD_GROCERY_LIST = gql`
-	mutation AddGroceryList($input: GroceryListInput!) {
-		addGroceryList(input: $input) {
+	mutation AddGroceryList($addGroceryListInput: GroceryListInput) {
+		addGroceryList(input: $addGroceryListInput) {
 			listName
-			users {
-				username
+			groceryItems {
 				_id
+				itemName
+				amount
+				measurement
+			}
+		}
+	}
+`;
+
+export const ADD_GROCERY_ITEM = gql`
+	mutation AddGroceryItem($addGroceryItemInput: GroceryItemInput!) {
+		addGroceryItem(input: $addGroceryItemInput) {
+			listName
+			groceryItems {
+				_id
+				itemName
+				amount
+				measurement
+			}
+		}
+	}
+`;
+export const REMOVE_GROCERY_ITEM = gql`
+	mutation RemoveGroceryItem(
+		$removeGroceryItemId: ID!
+		$removeGroceryItemGroceryListId: String!
+	) {
+		removeGroceryItem(
+			_id: $removeGroceryItemId
+			groceryListId: $removeGroceryItemGroceryListId
+		) {
+			listName
+			groceryItems {
+				_id
+				itemName
+				amount
+				measurement
 			}
 		}
 	}
 `;
 
 export const REMOVE_GROCERY_LIST = gql`
-	mutation RemoveGroceryList($removeGroceryListId: ID) {
+	mutation RemoveGroceryList($removeGroceryListId: String!) {
 		removeGroceryList(_id: $removeGroceryListId) {
-			savedGroceryLists {
-				_id
-				listName
-			}
-		}
-	}
-`;
-
-// GROCERY ITEM MUTATIONS
-export const ADD_GROCERY_ITEM = gql`
-	mutation AddGroceryItem($addGroceryItemInput: GroceryItemInput!) {
-		addGroceryItem(input: $addGroceryItemInput) {
-			_id
-			username
-			email
-			savedGroceryLists {
-				_id
-				listName
-				groceryItems {
-					_id
-					itemName
-					amount
-					measurement
-				}
-			}
-		}
-	}
-`;
-
-export const REMOVE_GROCERY_ITEM = gql`
-	mutation RemoveGroceryItem($id: ID!, $groceryListId: String!) {
-		removeGroceryItem(_id: $id, groceryListId: $groceryListId) {
-			savedGroceryLists {
-				groceryItems {
-					itemName
-				}
-			}
-		}
-	}
-`;
-
-export const ADD_NEW_GROCERY_LIST = gql`
-	mutation AddNewGroceryList($addNewGroceryListInput: NewGroceryListInput) {
-		addNewGroceryList(input: $addNewGroceryListInput) {
-			listName
-			user {
-				_id
-				username
-				email
-				savedGroceryLists
-			}
-			groceryItems {
-				_id
-				itemName
-				amount
-				measurement
-			}
-		}
-	}
-`;
-
-export const ADD_NEW_GROCERY_ITEM = gql`
-	mutation AddNewGroceryItem($addNewGroceryItemInput: GroceryItemInput!) {
-		addNewGroceryItem(input: $addNewGroceryItemInput) {
-			listName
-			groceryItems {
-				_id
-				itemName
-				amount
-				measurement
-			}
-		}
-	}
-`;
-
-export const REMOVE = gql`
-	mutation RemoveNewGroceryItem(
-		$removeNewGroceryItemId: ID!
-		$removeNewGroceryItemGroceryListId: String!
-	) {
-		removeNewGroceryItem(
-			_id: $removeNewGroceryItemId
-			groceryListId: $removeNewGroceryItemGroceryListId
-		) {
-			listName
-			user {
-				_id
-				username
-				email
-			}
-			groceryItems {
-				_id
-				itemName
-				amount
-				measurement
-			}
-		}
-	}
-`;
-
-export const REMOVE_NEW_GROCERY_LIST = gql`
-	mutation RemoveNewGroceryList($removeNewGroceryListId: String!) {
-		removeNewGroceryList(_id: $removeNewGroceryListId) {
 			listName
 		}
 	}
@@ -161,11 +91,9 @@ export const UPDATE_GROCERY_LIST = gql`
 	}
 `;
 
-export const UPDATE_NEW_GROCERY_ITEM = gql`
-	mutation UpdateNewGroceryItem(
-		$updateNewGroceryItemInput: UpdateGroceryItemInput!
-	) {
-		updateNewGroceryItem(input: $updateNewGroceryItemInput) {
+export const UPDATE_GROCERY_ITEM = gql`
+	mutation UpdateGroceryItem($updateGroceryItemInput: UpdateGroceryItemInput!) {
+		updateGroceryItem(input: $updateGroceryItemInput) {
 			_id
 			itemName
 			amount
