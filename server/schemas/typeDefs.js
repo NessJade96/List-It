@@ -15,6 +15,13 @@ const typeDefs = gql`
 		measurement: String
 	}
 
+	type NewGroceryItem {
+		_id: ID
+		itemName: String!
+		amount: Int
+		measurement: String
+	}
+
 	type GroceryList {
 		_id: ID
 		listName: String!
@@ -38,6 +45,14 @@ const typeDefs = gql`
 		newUsersId: String!
 	}
 
+	input UpdateGroceryItemInput {
+		groceryListId: String!
+		_id: String!
+		itemName: String!
+		amount: Int
+		measurement: String
+	}
+
 	input GroceryItemInput {
 		groceryListId: String!
 		itemName: String!
@@ -58,7 +73,7 @@ const typeDefs = gql`
 
 	type NewGroceryList {
 		listName: String!
-		user: [NewUser]
+		users: [NewUser]
 		groceryItems: [GroceryItem]
 	}
 
@@ -77,21 +92,18 @@ const typeDefs = gql`
 		login(email: String!, password: String!): Auth
 
 		addGroceryList(input: GroceryListInput!): GroceryList
-		updateGroceryList(input: UpdateGrocerylistInput!): GroceryList
+		UUupdateGroceryList(input: UpdateGrocerylistInput!): GroceryList
 		removeGroceryList(_id: ID): User
 
 		addGroceryItem(input: GroceryItemInput!): User
-		updateGroceryItem(
-			itemName: String!
-			amount: Int
-			measurement: String
-		): GroceryItem
 		removeGroceryItem(_id: ID!, groceryListId: String!): User
 
 		addNewGroceryList(input: NewGroceryListInput): NewGroceryList
 		addNewGroceryItem(input: GroceryItemInput!): NewGroceryList
 		removeNewGroceryItem(_id: ID!, groceryListId: String!): NewGroceryList
 		removeNewGroceryList(_id: String!): NewGroceryList
+		updateGroceryList(input: UpdateGrocerylistInput!): NewGroceryList
+		updateNewGroceryItem(input: UpdateGroceryItemInput!): NewGroceryItem
 	}
 `;
 

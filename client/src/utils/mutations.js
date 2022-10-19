@@ -147,3 +147,29 @@ export const REMOVE_NEW_GROCERY_LIST = gql`
 		}
 	}
 `;
+
+export const UPDATE_GROCERY_LIST = gql`
+	mutation UpdateGroceryList($updateGroceryListInput: UpdateGrocerylistInput!) {
+		updateGroceryList(input: $updateGroceryListInput) {
+			listName
+			users {
+				_id
+				username
+				email
+			}
+		}
+	}
+`;
+
+export const UPDATE_NEW_GROCERY_ITEM = gql`
+	mutation UpdateNewGroceryItem(
+		$updateNewGroceryItemInput: UpdateGroceryItemInput!
+	) {
+		updateNewGroceryItem(input: $updateNewGroceryItemInput) {
+			_id
+			itemName
+			amount
+			measurement
+		}
+	}
+`;
