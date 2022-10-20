@@ -1,24 +1,23 @@
-import React, {useState} from 'react';
-import {useMutation, useQuery} from '@apollo/client';
-import {NavLink} from 'react-router-dom';
+import React from 'react';
+import {useQuery} from '@apollo/client';
 
 // Importing queries and mutaitons
-import {ADD_GROCERY_LIST} from '../utils/mutations';
 import {GET_ME} from '../utils/queries';
 
 //Styled Components
 import {Button} from './Button';
-import {Form} from './Form';
 import {H3} from './H3';
-import {Input} from './Input';
 import {GroceryRow} from './GroceryRow';
 
 export default function YourLists() {
-	const {data, refetch, loading} = useQuery(GET_ME);
+	const user = useQuery(GET_ME);
+	const refetch = user.refetch;
+	const usersLists = user.data?.me?.savedGroceryLists ?? [];
 
-	const usersLists = data?.me?.savedGroceryLists ?? [];
+	// This refreshes the users saved grocery lists on page load.
+	refetch();
 
-	if (loading) {
+	if (user.loading) {
 		return <H3>loading your lists</H3>;
 	}
 
@@ -35,7 +34,7 @@ export default function YourLists() {
 			{usersLists.map((list) => {
 				return (
 					<GroceryRow key={list._id}>
-						{list}
+						{list.listName}
 						<Button>✖</Button>
 					</GroceryRow>
 				);

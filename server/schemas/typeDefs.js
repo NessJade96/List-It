@@ -5,7 +5,7 @@ const typeDefs = gql`
 		_id: ID!
 		username: String!
 		email: String!
-		savedGroceryLists: [GroceryList]
+		savedGroceryLists: [GroceryListName]
 	}
 
 	type GroceryItem {
@@ -15,16 +15,15 @@ const typeDefs = gql`
 		measurement: String
 	}
 
+	type GroceryListName {
+		listName: String!
+		_id: ID!
+	}
+
 	type GroceryList {
 		listName: String!
 		users: [User]
 		groceryItems: [GroceryItem]
-	}
-
-	input UserInput {
-		_id: ID!
-		username: String!
-		email: String!
 	}
 
 	input UpdateGrocerylistInput {

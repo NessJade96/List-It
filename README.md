@@ -107,13 +107,19 @@ Colorpallet from Coolors:
 
 18. Realised I needed to refactor the collection models -> so all the queries and mutations were created again for the new models and a code tidyup was completed.
 
-19. Working on frontend components - I created the 'create list' component so users to enter a list name and this creates a list.
+19. Working on frontend components - I created the 'create list' component so users to enter a list name and this creates a list. Additionally created the YourLists component and page so display your lists
+    ![Lists](./assets/YourLists.jpg)
+
+Tonight:
+// Have a message pop up when new list is created?? or nav to 'yourlists' page.
+// Deploy to Heroku
+// Delete the grocery list
 
 Todo:
-
-// Have a message pop up when new list is created?? or nav to 'yourlists' page.
+// When clicking on a grocery list in 'YourLists' page - this takes the user to that grocery list and renders groceryItems
 // work on frontend visuals
 // create an input field on list page where you can add a friends username - this will add to the grocerylist array of users.
 // show what users are on this list - render to the screen
+// Go through the readme and update information
 
 Thank you, Vanessa Bloom <(^.^)>

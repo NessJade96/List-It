@@ -8,10 +8,34 @@ const resolvers = {
 		// Get a single user by thier id or username
 		me: async (_, args, context) => {
 			if (context.user) {
-				const userInfo = await User.findOne({_id: context.user._id}).select(
-					'-__v -password'
+				console.log(
+					'🚀 ~ file: resolvers.js ~ line 11 ~ me: ~ context.user',
+					context.user
 				);
-				return userInfo;
+				const userPromise = User.findById({
+					_id: context.user._id,
+				}).select('-__v -password');
+
+				const groceryListPromise = GroceryList.find({
+					users: {$in: [context.user._id]},
+				}).select('listName');
+
+				const [user, groceryLists] = await Promise.all([
+					userPromise,
+					groceryListPromise,
+				]);
+				console.log(
+					'🚀 ~ file: resolvers.js ~ line 23 ~ me: ~ groceryLists',
+					groceryLists
+				);
+				console.log('🚀 ~ file: resolvers.js ~ line 23 ~ me: ~ user', user);
+
+				return {
+					_id: user._id,
+					username: user.username,
+					email: user.email,
+					savedGroceryLists: groceryLists,
+				};
 			}
 			throw new AuthenticationError('You need to be logged in!');
 		},
