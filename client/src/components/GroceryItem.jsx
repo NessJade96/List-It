@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import GroceryItemForm from './GroceryItemForm';
-import {Icons} from './icons';
+import {Icons} from './Icons';
 
 import {GroceryRow} from './GroceryRow';
 
