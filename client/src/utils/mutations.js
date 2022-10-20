@@ -24,8 +24,8 @@ export const LOGIN_USER = gql`
 `;
 
 export const ADD_GROCERY_LIST = gql`
-	mutation AddGroceryList($addGroceryListInput: GroceryListInput) {
-		addGroceryList(input: $addGroceryListInput) {
+	mutation AddGroceryList($listName: String!) {
+		addGroceryList(input: {listName: $listName}) {
 			listName
 			groceryItems {
 				_id

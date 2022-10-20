@@ -4,8 +4,6 @@ import {Input} from './Input';
 import {Button} from './Button';
 import {H3} from './H3';
 
-import {useQuery} from '@apollo/client';
-
 export default function GroceryItemForm(props) {
 	const [text, setText] = useState(props.edit?.text ?? '');
 	const [amount, setAmount] = useState(props.edit?.amount ?? '');

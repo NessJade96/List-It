@@ -107,12 +107,13 @@ Colorpallet from Coolors:
 
 18. Realised I needed to refactor the collection models -> so all the queries and mutations were created again for the new models and a code tidyup was completed.
 
+19. Working on frontend components - I created the 'create list' component so users to enter a list name and this creates a list.
+
 Todo:
 
+// Have a message pop up when new list is created?? or nav to 'yourlists' page.
 // work on frontend visuals
 // create an input field on list page where you can add a friends username - this will add to the grocerylist array of users.
 // show what users are on this list - render to the screen
 
 Thank you, Vanessa Bloom <(^.^)>
-
-[Good link on deploying to github pages while using Vite](https://dev.to/shashannkbawa/deploying-vite-app-to-github-pages-3ane)

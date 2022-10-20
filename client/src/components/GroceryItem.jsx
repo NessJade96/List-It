@@ -1,19 +1,8 @@
 import React, {useState} from 'react';
 import GroceryItemForm from './GroceryItemForm';
-import styled, {css} from 'styled-components';
 import {Icons} from './icons';
 
-const GroceryItemRow = styled.div`
-	display: flex;
-	justify-content: space-between;
-	border: 1px solid var(--Gainsboro);
-	padding: 0.5rem;
-	margin: 0.5rem;
-	color: var(--Purple);
-	background: var(--Xanadu);
-	font-size: 1.5rem;
-	place-items: center;
-`;
+import {GroceryRow} from './GroceryRow';
 
 function GroceryItem(props) {
 	const {groceryItems} = props;
@@ -34,7 +23,7 @@ function GroceryItem(props) {
 	}
 
 	return groceryItems.map((item, i) => (
-		<GroceryItemRow
+		<GroceryRow
 			className={
 				item.isComplete ? `groceryItem-row complete` : `groceryItem-row`
 			}
@@ -58,7 +47,7 @@ function GroceryItem(props) {
 				</Icons>
 				<Icons onClick={() => props.removeGroceryItem(item.id)}>✔</Icons>
 			</div>
-		</GroceryItemRow>
+		</GroceryRow>
 	));
 }
 

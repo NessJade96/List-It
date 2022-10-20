@@ -46,7 +46,6 @@ export default function GroceryItemList() {
 		}
 
 		// Then check to see if the item ID matches the ID of the item that was clicked, and if so we set it to a new value.
-
 		const editedGoceryListItems = groceryItems.map((item) =>
 			item.id === id ? {id, ...rest} : item
 		);

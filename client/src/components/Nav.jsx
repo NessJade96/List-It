@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import avocado from '../assets/avo.svg';
 import {Button} from './Button';
 import styled, {css} from 'styled-components';
 import {NavLink} from 'react-router-dom';
 import Auth from '../utils/auth';
+import {Menu} from './Menu';
 
 export const Header = styled.header`
 	border-radius: 3px;
@@ -39,11 +40,15 @@ export default function Nav() {
 				{/* if user is logged in show saved books and logout */}
 				{Auth.loggedIn() ? (
 					<div>
-						<NavLink to="/" exact="true">
+						{/* <Menu></Menu> */}
+						<NavLink to="/yourlists" exact="true">
 							<Button>your lists</Button>
 						</NavLink>
+						<NavLink to="/createlist" exact="true">
+							<Button style={{margin: '0 0 1rem 0.7rem'}}>create list</Button>
+						</NavLink>
 						<NavLink onClick={Auth.logout} to="/login" exact="true">
-							<Button style={{margin: '0 0 1rem 1.5rem'}}>logout</Button>
+							<Button style={{margin: '0 0 1rem 0.7rem'}}>logout</Button>
 						</NavLink>
 					</div>
 				) : (

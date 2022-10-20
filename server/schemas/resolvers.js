@@ -54,7 +54,7 @@ const resolvers = {
 
 				const updatedUser = await User.findByIdAndUpdate(
 					{_id: context.user._id},
-					{$push: {savedGroceryLists: groceryList._id}},
+					{$push: {savedGroceryLists: groceryList}},
 					{new: true, runValidators: true}
 				);
 

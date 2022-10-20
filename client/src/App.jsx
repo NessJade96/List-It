@@ -10,10 +10,12 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 //Styles and components
 import GlobalStyle from './globalStyles';
-import Nav from './components/Nav';
+import Nav, {YourList} from './components/Nav';
 import GroceryItemList from './components/GroceryItemList';
 import SignupForm from './components/SignupForm';
 import LoginForm from './components/loginForm';
+import CreateList from './components/CreateList';
+import YourLists from './components/YourLists';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -53,6 +55,8 @@ function App() {
 					<Route path="/" element={<GroceryItemList />} />
 					<Route path="/signup" element={<SignupForm />} />
 					<Route path="/login" element={<LoginForm />} />
+					<Route path="/createlist" element={<CreateList />} />
+					<Route path="/yourlists" element={<YourLists />} />
 					<Route
 						path="*"
 						element={<h1 className="display-2">Wrong page!</h1>}
