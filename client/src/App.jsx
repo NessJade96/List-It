@@ -21,6 +21,7 @@ import YourLists from './components/YourLists';
 const httpLink = createHttpLink({
 	uri: 'http://localhost:3001/graphql',
 	cache: new InMemoryCache(),
+	persistedQueries: false,
 });
 
 // Construct request middleware that will attach the JWT token to every request as an `authorization` header
