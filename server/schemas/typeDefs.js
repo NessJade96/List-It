@@ -68,7 +68,7 @@ const typeDefs = gql`
 		addGroceryList(input: GroceryListInput): GroceryList
 		addGroceryItem(input: GroceryItemInput!): GroceryList
 
-		removeGroceryItem(_id: ID!, groceryListId: String!): GroceryList
+		removeGroceryItem(_id: ID!): GroceryItem
 		removeGroceryList(_id: String!): GroceryList
 
 		updateGroceryList(input: UpdateGrocerylistInput!): GroceryList

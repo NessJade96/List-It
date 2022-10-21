@@ -1,6 +1,8 @@
 import React from 'react';
 import {useMutation, useQuery} from '@apollo/client';
 import {useNavigate} from 'react-router-dom';
+import styled, {css} from 'styled-components';
+import {Link} from 'react-router-dom';
 
 // Importing queries and mutaitons
 import {GET_ME} from '../utils/queries';
@@ -9,7 +11,22 @@ import {REMOVE_GROCERY_LIST} from '../utils/mutations';
 //Styled Components
 import {Button} from './Button';
 import {H3} from './H3';
-import {GroceryRow} from './GroceryRow';
+
+const List = styled.div`
+	display: flex;
+	justify-content: space-between;
+	border: 1px solid var(--Gainsboro);
+	padding: 0.5rem;
+	margin: 0.5rem;
+	background: var(--Xanadu);
+	font-size: 1.5rem;
+	place-items: center;
+`;
+
+const StyledLink = styled(Link)`
+	color: var(--Purple);
+	flex-grow: 1;
+`;
 
 export default function YourLists() {
 	const user = useQuery(GET_ME);
@@ -18,12 +35,10 @@ export default function YourLists() {
 
 	// This refreshes the users saved grocery lists on page load.
 	refetch();
-
-	const navigate = useNavigate();
-
 	const [removeList] = useMutation(REMOVE_GROCERY_LIST);
 
-	const handleRemoveList = async (listId) => {
+	const handleRemoveList = async (event, listId) => {
+		event.stopPropagation();
 		try {
 			await removeList({
 				variables: {
@@ -52,10 +67,12 @@ export default function YourLists() {
 
 			{usersLists.map((list) => {
 				return (
-					<GroceryRow key={list._id} onClick={() => navigate(`/${list._id}`)}>
-						{list.listName}
-						<Button onClick={() => handleRemoveList(list._id)}>✖</Button>
-					</GroceryRow>
+					<List>
+						<StyledLink items key={list._id} to={`/${list._id}`}>
+							{list.listName}
+						</StyledLink>
+						<Button onClick={(e) => handleRemoveList(e, list._id)}>✖</Button>
+					</List>
 				);
 			})}
 		</>

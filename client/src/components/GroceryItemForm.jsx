@@ -37,7 +37,7 @@ export default function GroceryItemForm(props) {
 					addGroceryItemInput: {
 						groceryListId: id,
 						itemName: text,
-						amount,
+						amount: Number(amount),
 						measurement,
 					},
 				},
@@ -50,6 +50,7 @@ export default function GroceryItemForm(props) {
 		setText('');
 		setMeasurement('');
 		setAmount(0);
+		props.onSubmit();
 	};
 
 	// Check to see if "edit" prop exists. If not, render the normal form

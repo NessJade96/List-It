@@ -31,7 +31,9 @@ const resolvers = {
 			throw new AuthenticationError('You need to be logged in!');
 		},
 		groceryList: async (_, {_id}) => {
-			return await GroceryList.findById({_id});
+			const lists = await GroceryList.find({_id});
+
+			return lists[0];
 		},
 		groceryItem: async (_, {_id}) => {
 			return await GroceryItem.findById({_id});
@@ -100,12 +102,10 @@ const resolvers = {
 			throw new AuthenticationError('No user found to add a grocery list');
 		},
 		// remove a GroceryItem from `groceryItem`
-		removeGroceryItem: async (_, {_id, groceryListId}, context) => {
+		removeGroceryItem: async (_, {_id}, context) => {
 			if (context.user) {
-				const groceryItem = await GroceryList.findOneAndUpdate(
-					{_id: groceryListId},
-					{$pull: {groceryItems: _id}}
-				).populate('groceryItems');
+				const groceryItem = await GroceryItem.findByIdAndRemove({_id});
+
 				console.log('Grocery item removed from the list');
 				return groceryItem;
 			}
@@ -114,9 +114,7 @@ const resolvers = {
 		// remove the Grocery list
 		removeGroceryList: async (_, {_id}, context) => {
 			if (context.user) {
-				const groceryList = await GroceryList.findOneAndRemove({
-					_id: _id,
-				});
+				const groceryList = await GroceryList.findOneAndRemove({_id});
 				console.log('Grocery list removed');
 				return groceryList;
 			}
