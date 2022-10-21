@@ -110,13 +110,10 @@ Colorpallet from Coolors:
 19. Working on frontend components - I created the 'create list' component so users to enter a list name and this creates a list. Additionally created the YourLists component and page so display your lists
     ![Lists](./assets/YourLists.jpg)
 
-Tonight:
-// Have a message pop up when new list is created?? or nav to 'yourlists' page.
-// Deploy to Heroku
-// Delete the grocery list
+20. Github continous deploy to heroku setup - site is live! When submitting your new list name, it will navigate you to 'yourlists' page on creation. When user is logged in and viewing their lists, the user can now delete the list by clicking on the cross.
 
 Todo:
-// When clicking on a grocery list in 'YourLists' page - this takes the user to that grocery list and renders groceryItems
+
 // work on frontend visuals
 // create an input field on list page where you can add a friends username - this will add to the grocerylist array of users.
 // show what users are on this list - render to the screen

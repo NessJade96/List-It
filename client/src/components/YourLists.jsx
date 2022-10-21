@@ -1,8 +1,9 @@
 import React from 'react';
-import {useQuery} from '@apollo/client';
+import {useMutation, useQuery} from '@apollo/client';
 
 // Importing queries and mutaitons
 import {GET_ME} from '../utils/queries';
+import {REMOVE_GROCERY_LIST} from '../utils/mutations';
 
 //Styled Components
 import {Button} from './Button';
@@ -16,6 +17,21 @@ export default function YourLists() {
 
 	// This refreshes the users saved grocery lists on page load.
 	refetch();
+
+	const [removeList] = useMutation(REMOVE_GROCERY_LIST);
+
+	const handleRemoveList = async (listId) => {
+		try {
+			await removeList({
+				variables: {
+					removeGroceryListId: listId,
+				},
+			});
+		} catch (err) {
+			console.log('something went wrong :(');
+			console.error(err);
+		}
+	};
 
 	if (user.loading) {
 		return <H3>loading your lists</H3>;
@@ -35,7 +51,7 @@ export default function YourLists() {
 				return (
 					<GroceryRow key={list._id}>
 						{list.listName}
-						<Button>✖</Button>
+						<Button onClick={() => handleRemoveList(list._id)}>✖</Button>
 					</GroceryRow>
 				);
 			})}

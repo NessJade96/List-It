@@ -8,10 +8,6 @@ const resolvers = {
 		// Get a single user by thier id or username
 		me: async (_, args, context) => {
 			if (context.user) {
-				console.log(
-					'🚀 ~ file: resolvers.js ~ line 11 ~ me: ~ context.user',
-					context.user
-				);
 				const userPromise = User.findById({
 					_id: context.user._id,
 				}).select('-__v -password');
@@ -24,11 +20,6 @@ const resolvers = {
 					userPromise,
 					groceryListPromise,
 				]);
-				console.log(
-					'🚀 ~ file: resolvers.js ~ line 23 ~ me: ~ groceryLists',
-					groceryLists
-				);
-				console.log('🚀 ~ file: resolvers.js ~ line 23 ~ me: ~ user', user);
 
 				return {
 					_id: user._id,
@@ -115,7 +106,7 @@ const resolvers = {
 					{_id: groceryListId},
 					{$pull: {groceryItems: _id}}
 				).populate('groceryItems');
-				console.log('Grocery item removed from the list');
+				console.log('Grocery list removed');
 				return groceryItem;
 			}
 			throw new AuthenticationError('No Groceries under this Id to remove');

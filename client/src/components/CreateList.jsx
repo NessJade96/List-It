@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {useMutation, useQuery} from '@apollo/client';
-import {NavLink} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 // Importing queries and mutaitons
 import {ADD_GROCERY_LIST} from '../utils/mutations';
@@ -33,7 +33,10 @@ export default function CreateList() {
 		}
 
 		setListName('');
+		navigate('/yourlists');
 	};
+
+	const navigate = useNavigate();
 
 	return (
 		<>
