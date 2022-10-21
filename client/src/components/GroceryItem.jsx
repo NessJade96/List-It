@@ -5,7 +5,7 @@ import {Icons} from './Icons';
 import {GroceryRow} from './GroceryRow';
 
 function GroceryItem(props) {
-	const {groceryItems} = props;
+	const {groceryItem} = props;
 	const [edit, setEdit] = useState({
 		id: null,
 		text: '',
@@ -22,33 +22,28 @@ function GroceryItem(props) {
 		return <GroceryItemForm edit={edit} onSubmit={submitUpdate} />;
 	}
 
-	return groceryItems.map((item, i) => (
-		<GroceryRow
-			className={
-				item.isComplete ? `groceryItem-row complete` : `groceryItem-row`
-			}
-			key={i}
-		>
-			<div key={item.id} onClick={() => props.completeGroceryItem(item.id)}>
-				{item.text} {item.amount} {item.measurement}
+	return (
+		<GroceryRow key={groceryItem.id}>
+			<div onClick={() => props.completeGroceryItem(item.id)}>
+				{groceryItem.text} {groceryItem.amount} {groceryItem.measurement}
 			</div>
-			<div style={{display: 'flex'}} className="icons">
+			<div style={{display: 'flex'}}>
 				<Icons
 					onClick={() =>
 						setEdit({
-							id: item.id,
-							text: item.text,
-							amount: item.amount,
-							measurement: item.measurement,
+							id: groceryItem.id,
+							text: groceryItem.text,
+							amount: groceryItem.amount,
+							measurement: groceryItem.measurement,
 						})
 					}
 				>
 					✎
 				</Icons>
-				<Icons onClick={() => props.removeGroceryItem(item.id)}>✔</Icons>
+				<Icons onClick={() => props.removeGroceryItem(groceryItem.id)}>✔</Icons>
 			</div>
 		</GroceryRow>
-	));
+	);
 }
 
 export default GroceryItem;

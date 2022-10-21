@@ -1,5 +1,6 @@
 import React from 'react';
 import {useMutation, useQuery} from '@apollo/client';
+import {useNavigate} from 'react-router-dom';
 
 // Importing queries and mutaitons
 import {GET_ME} from '../utils/queries';
@@ -17,6 +18,8 @@ export default function YourLists() {
 
 	// This refreshes the users saved grocery lists on page load.
 	refetch();
+
+	const navigate = useNavigate();
 
 	const [removeList] = useMutation(REMOVE_GROCERY_LIST);
 
@@ -41,7 +44,7 @@ export default function YourLists() {
 		<>
 			<H3>
 				{usersLists.length
-					? `Viewing ${usersLists.length} saved ${
+					? `Viewing your ${usersLists.length} saved ${
 							usersLists.length === 1 ? 'list' : 'lists'
 					  }:`
 					: `you have no saved lists`}
@@ -49,7 +52,7 @@ export default function YourLists() {
 
 			{usersLists.map((list) => {
 				return (
-					<GroceryRow key={list._id}>
+					<GroceryRow key={list._id} onClick={() => navigate(`/${list._id}`)}>
 						{list.listName}
 						<Button onClick={() => handleRemoveList(list._id)}>✖</Button>
 					</GroceryRow>

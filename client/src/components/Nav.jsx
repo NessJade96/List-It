@@ -1,10 +1,12 @@
-import React, {useState} from 'react';
+import React from 'react';
 import avocado from '../assets/avo.svg';
 import {Button} from './Button';
-import styled, {css} from 'styled-components';
+import styled from 'styled-components';
 import {NavLink} from 'react-router-dom';
+import {useMutation, useQuery} from '@apollo/client';
 import Auth from '../utils/auth';
-import {Menu} from './Menu';
+
+// import {GET_GROCERY_LIST} from '../utils/queries';
 
 export const Header = styled.header`
 	border-radius: 3px;
@@ -34,13 +36,14 @@ export const YourList = styled.div`
 `;
 
 export default function Nav() {
+	// const listId = useQuery(GET_GROCERY_LIST);
+	// console.log('🚀 ~ file: Nav.jsx ~ line 40 ~ Nav ~ listId', listId);
+
 	return (
 		<Header>
 			<YourList>
-				{/* if user is logged in show saved books and logout */}
 				{Auth.loggedIn() ? (
 					<div>
-						{/* <Menu></Menu> */}
 						<NavLink to="/yourlists" exact="true">
 							<Button>your lists</Button>
 						</NavLink>
@@ -50,6 +53,7 @@ export default function Nav() {
 						<NavLink onClick={Auth.logout} to="/login" exact="true">
 							<Button style={{margin: '0 0 1rem 0.7rem'}}>logout</Button>
 						</NavLink>
+						<H1>Shopping List</H1>
 					</div>
 				) : (
 					<div>
@@ -59,9 +63,10 @@ export default function Nav() {
 						<NavLink to="/login" exact="true">
 							<Button style={{margin: '0 0 1rem 1.5rem'}}>Login</Button>
 						</NavLink>
+						<H1>Shopping List</H1>
 					</div>
 				)}
-				<H1>Shopping List</H1>
+				{/* <H1>Shopping List</H1> */}
 			</YourList>
 			<img className="avocado" src={avocado} alt="avocado"></img>
 		</Header>

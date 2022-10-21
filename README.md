@@ -41,7 +41,7 @@ Vite for React, HTML, CSS, Styled-Components, Babel-plugin-styled-components, Ap
 ## Links:
 
 - GitHub: https://github.com/NessJade96/Project-3
-- Heroku:
+- Heroku: https://blooming-basin-11579.herokuapp.com/
 
 ## planning notes:
 
@@ -112,11 +112,17 @@ Colorpallet from Coolors:
 
 20. Github continous deploy to heroku setup - site is live! When submitting your new list name, it will navigate you to 'yourlists' page on creation. When user is logged in and viewing their lists, the user can now delete the list by clicking on the cross.
 
-Todo:
+21. Went through and changed the user loggedIn? navigation routes. Can now add groceryItems to the groceryList.
 
+Todo:
+// Update the nav bar for logged in users info
+// Update grocery lists ( add users) and update grocery items (change amounts etc.)
+// Change the update / active state on the NAV bar to update "shopping list' to say 'yourlists' or the list name, or 'create list'
+// When clicking on grocery list - takes to the list items and renders.
 // work on frontend visuals
 // create an input field on list page where you can add a friends username - this will add to the grocerylist array of users.
 // show what users are on this list - render to the screen
+// Update the mobile design (currently too small)
 // Go through the readme and update information
 
 Thank you, Vanessa Bloom <(^.^)>

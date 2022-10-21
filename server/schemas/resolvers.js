@@ -30,10 +30,10 @@ const resolvers = {
 			}
 			throw new AuthenticationError('You need to be logged in!');
 		},
-		groceryList: async (_, {_id}, context) => {
+		groceryList: async (_, {_id}) => {
 			return await GroceryList.findById({_id});
 		},
-		groceryItem: async (_, {_id}, context) => {
+		groceryItem: async (_, {_id}) => {
 			return await GroceryItem.findById({_id});
 		},
 	},
@@ -106,7 +106,7 @@ const resolvers = {
 					{_id: groceryListId},
 					{$pull: {groceryItems: _id}}
 				).populate('groceryItems');
-				console.log('Grocery list removed');
+				console.log('Grocery item removed from the list');
 				return groceryItem;
 			}
 			throw new AuthenticationError('No Groceries under this Id to remove');
@@ -117,7 +117,7 @@ const resolvers = {
 				const groceryList = await GroceryList.findOneAndRemove({
 					_id: _id,
 				});
-				console.log('Grocery item removed from the list');
+				console.log('Grocery list removed');
 				return groceryList;
 			}
 			throw new AuthenticationError('No Groceries under this Id to remove');

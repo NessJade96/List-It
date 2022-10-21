@@ -7,6 +7,7 @@ import {
 } from '@apollo/client';
 import {setContext} from '@apollo/client/link/context';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import Auth from './utils/auth';
 
 //Styles and components
 import GlobalStyle from './globalStyles';
@@ -51,17 +52,28 @@ function App() {
 			<Router>
 				<GlobalStyle />
 				<Nav />
-				<Routes>
-					<Route path="/" element={<GroceryItemList />} />
-					<Route path="/signup" element={<SignupForm />} />
-					<Route path="/login" element={<LoginForm />} />
-					<Route path="/createlist" element={<CreateList />} />
-					<Route path="/yourlists" element={<YourLists />} />
-					<Route
-						path="*"
-						element={<h1 className="display-2">Wrong page!</h1>}
-					/>
-				</Routes>
+				{Auth.loggedIn() ? (
+					<Routes>
+						<Route path="/:id" element={<GroceryItemList />} />
+						<Route path="/createlist" element={<CreateList />} />
+						<Route path="/yourlists" element={<YourLists />} />
+						<Route path="/" element={<YourLists />} />
+						<Route
+							path="*"
+							element={<h1 className="display-2">Wrong page!</h1>}
+						/>
+					</Routes>
+				) : (
+					<Routes>
+						<Route path="/signup" element={<SignupForm />} />
+						<Route path="/login" element={<LoginForm />} />
+						<Route path="/" element={<SignupForm />} />
+						<Route
+							path="*"
+							element={<h1 className="display-2">Wrong page!</h1>}
+						/>
+					</Routes>
+				)}
 			</Router>
 		</ApolloProvider>
 	);

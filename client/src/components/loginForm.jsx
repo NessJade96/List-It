@@ -12,8 +12,6 @@ import {H3} from './H3';
 
 const LoginForm = () => {
 	const [userFormData, setUserFormData] = useState({email: '', password: ''});
-	// const [validated] = useState(false);
-	// const [showAlert, setShowAlert] = useState(false);
 
 	const [loginUser] = useMutation(LOGIN_USER);
 
@@ -25,22 +23,12 @@ const LoginForm = () => {
 	const handleFormSubmit = async (event) => {
 		event.preventDefault();
 
-		// check if form has everything (as per react-bootstrap docs)
-		// const form = event.currentTarget;
-
-		// if (form.checkValidity() === false) {
-		// 	event.preventDefault();
-		// 	event.stopPropagation();
-		// 	return;
-		// }
-
 		try {
 			const res = await loginUser({variables: userFormData});
 
 			Auth.login(res.data.login.token);
 		} catch (err) {
 			console.error(err, 'ERROR logging in');
-			// setShowAlert(true);
 		}
 
 		setUserFormData({

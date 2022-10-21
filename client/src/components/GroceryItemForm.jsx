@@ -1,30 +1,23 @@
 import React, {useState} from 'react';
+import {useMutation, useQuery} from '@apollo/client';
+import {useParams} from 'react-router-dom';
+
+// Styled Components
 import {Form} from './Form';
 import {Input} from './Input';
 import {Button} from './Button';
 import {H3} from './H3';
 
+import {ADD_GROCERY_ITEM} from '../utils/mutations';
+
 export default function GroceryItemForm(props) {
+	const {id} = useParams();
+	const [addGroceryItem] = useMutation(ADD_GROCERY_ITEM);
+
 	const [text, setText] = useState(props.edit?.text ?? '');
-	const [amount, setAmount] = useState(props.edit?.amount ?? '');
+	const [amount, setAmount] = useState(props.edit?.amount ?? 0);
 	const [measurement, setMeasurement] = useState(props.edit?.measurement ?? '');
 
-	const handleSubmit = (e) => {
-		e.preventDefault();
-
-		props.onSubmit({
-			id: Math.random(Math.floor() * 1000),
-			text,
-			amount,
-			measurement,
-		});
-		// empty inputs after submit
-		setText('');
-		setMeasurement('');
-		setAmount('');
-	};
-
-	// Maybe change this into a try/catch switch/case?
 	const handleChange = (e) => {
 		if (e.target.name === 'text') {
 			setText(e.target.value);
@@ -33,6 +26,30 @@ export default function GroceryItemForm(props) {
 		} else if (e.target.name === 'measurement') {
 			setMeasurement(e.target.value);
 		}
+	};
+
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+
+		try {
+			await addGroceryItem({
+				variables: {
+					addGroceryItemInput: {
+						groceryListId: id,
+						itemName: text,
+						amount,
+						measurement,
+					},
+				},
+			});
+			console.log('Created grocery item');
+		} catch (err) {
+			console.log(err);
+		}
+
+		setText('');
+		setMeasurement('');
+		setAmount(0);
 	};
 
 	// Check to see if "edit" prop exists. If not, render the normal form

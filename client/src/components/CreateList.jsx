@@ -14,7 +14,7 @@ import {Input} from './Input';
 export default function CreateList() {
 	const [listName, setListName] = useState('');
 
-	const [addGroceryList, args] = useMutation(ADD_GROCERY_LIST);
+	const [addGroceryList] = useMutation(ADD_GROCERY_LIST);
 
 	const handleInputChange = (event) => {
 		if (event.target.name === 'listName') {
