@@ -102,12 +102,15 @@ const resolvers = {
 			throw new AuthenticationError('No user found to add a grocery list');
 		},
 		// remove a GroceryItem from `groceryItem`
-		removeGroceryItem: async (_, {_id}, context) => {
+		removeGroceryItem: async (_, {_id, groceryListId}, context) => {
 			if (context.user) {
-				const groceryItem = await GroceryItem.findByIdAndRemove({_id});
-
+				const groceryList = await GroceryList.findOneAndUpdate(
+					{_id: groceryListId},
+					{$pull: {groceryItems: {_id}}},
+					{new: true, runValidators: true}
+				);
 				console.log('Grocery item removed from the list');
-				return groceryItem;
+				return groceryList;
 			}
 			throw new AuthenticationError('No Groceries under this Id to remove');
 		},
@@ -118,7 +121,7 @@ const resolvers = {
 				console.log('Grocery list removed');
 				return groceryList;
 			}
-			throw new AuthenticationError('No Groceries under this Id to remove');
+			throw new AuthenticationError('No Grocery list under this Id to remove');
 		},
 		// Update the GroceryList so users can add other users to the GroceryList
 		updateGroceryList: async (_, args, context) => {

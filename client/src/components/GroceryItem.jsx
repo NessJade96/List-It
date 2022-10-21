@@ -4,6 +4,8 @@ import {Icons} from './Icons';
 import {useParams} from 'react-router-dom';
 import {useMutation, useQuery} from '@apollo/client';
 
+import {GET_GROCERY_LIST} from '../utils/queries';
+
 // Styled Components
 import styled, {css} from 'styled-components';
 
@@ -27,6 +29,9 @@ function GroceryItem(props) {
 
 	const {id} = useParams();
 
+	const {refetch} = useQuery(GET_GROCERY_LIST, {
+		variables: {id},
+	});
 	const [removeItem] = useMutation(REMOVE_GROCERY_ITEM);
 
 	const handleRemoveItem = async () => {
@@ -37,6 +42,7 @@ function GroceryItem(props) {
 					removeGroceryItemGroceryListId: id,
 				},
 			});
+			refetch();
 		} catch (err) {
 			console.log(err);
 		}

@@ -15,7 +15,7 @@ export default function GroceryItemForm(props) {
 	const [addGroceryItem] = useMutation(ADD_GROCERY_ITEM);
 
 	const [text, setText] = useState(props.edit?.text ?? '');
-	const [amount, setAmount] = useState(props.edit?.amount ?? 0);
+	const [amount, setAmount] = useState(props.edit?.amount ?? '');
 	const [measurement, setMeasurement] = useState(props.edit?.measurement ?? '');
 
 	const handleChange = (e) => {
@@ -49,7 +49,7 @@ export default function GroceryItemForm(props) {
 
 		setText('');
 		setMeasurement('');
-		setAmount(0);
+		setAmount('');
 		props.onSubmit();
 	};
 

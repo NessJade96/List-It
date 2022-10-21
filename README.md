@@ -115,7 +115,7 @@ Colorpallet from Coolors:
 21. Went through and changed the user loggedIn? navigation routes. Can now add groceryItems to the groceryList. Grocery list items now render the the screen.
 
 Todo:
-// edit and delete listItems on groceryList page.
+// edit listItems on groceryList page.
 // Update the nav bar for logged in users info
 // Update grocery lists ( add users) and update grocery items (change amounts etc.)
 // Change the update / active state on the NAV bar to update "shopping list' to say 'yourlists' or the list name, or 'create list'

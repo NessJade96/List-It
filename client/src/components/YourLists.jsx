@@ -1,6 +1,5 @@
 import React from 'react';
 import {useMutation, useQuery} from '@apollo/client';
-import {useNavigate} from 'react-router-dom';
 import styled, {css} from 'styled-components';
 import {Link} from 'react-router-dom';
 
@@ -67,8 +66,8 @@ export default function YourLists() {
 
 			{usersLists.map((list) => {
 				return (
-					<List>
-						<StyledLink items key={list._id} to={`/${list._id}`}>
+					<List key={list._id}>
+						<StyledLink key={list._id} to={`/${list._id}`}>
 							{list.listName}
 						</StyledLink>
 						<Button onClick={(e) => handleRemoveList(e, list._id)}>✖</Button>
