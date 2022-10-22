@@ -7,7 +7,7 @@ import {useMutation, useQuery} from '@apollo/client';
 import {GET_GROCERY_LIST} from '../utils/queries';
 
 // Styled Components
-import styled, {css} from 'styled-components';
+import styled from 'styled-components';
 
 const GroceryRow = styled.div`
 	display: flex;
@@ -48,44 +48,39 @@ function GroceryItem(props) {
 		}
 	};
 
-	// console.log(
-	// 	'🚀 ~ file: GroceryItem.jsx ~ line 9 ~ GroceryItem ~ groceryItem',
-	// 	groceryItem
-	// );
+	const [updateGroceryItem] = useMutation(UPDATE_GROCERY_ITEM);
 
-	//   const [updateGroceryItem] = useMutation(UPDATE_GROCERY_ITEM)
+	const editGroceryListItem = async (groceryItem, id) => {
+		const {_id, text, amount, measurement} = groceryItem;
+		try {
+			await updateGroceryItem({
+				variables: {
+					updateGroceryItemInput: {
+						groceryListId: id,
+						_id,
+						itemName: text,
+						amount,
+						measurement,
+					},
+				},
+			});
+		} catch (err) {
+			console.log(err);
+		}
+	};
 
-	//   const removeGroceryItem = async (_id)=>{
-	//     try {
-	//       await updateGroceryItem({variables: {
-	//         updateGroceryItemInput: {
-	//           groceryListId,
-	//           _id,
-	//           itemName: text,
-	//           amount,
-	//           measurement
-	//         }
-	//       }})
-	//     }
+	const [edit, setEdit] = useState({
+		_id: null,
+	});
 
-	//   }
+	const submitUpdate = (text) => {
+		editGroceryListItem(text, id);
+		setEdit({_id: null, text: '', amount: '', measurement: ''});
+	};
 
-	// OLD CODE - WILL NEED TO REDO FOR UPDATING LIST ITEMS
-	// const [edit, setEdit] = useState({
-	// 	id: null,
-	// 	text: '',
-	// 	amount: '',
-	// 	measurement: '',
-	// });
-
-	// const submitUpdate = (text) => {
-	// 	props.editGroceryListItem(text);
-	// 	setEdit({id: null, text: '', amount: '', measurement: ''});
-	// };
-
-	// if (edit.id) {
-	// 	return <GroceryItemForm edit={edit} onSubmit={submitUpdate} />;
-	// }
+	if (edit._id) {
+		return <GroceryItemForm edit={edit} onSubmit={submitUpdate} />;
+	}
 
 	return (
 		<GroceryRow key={groceryItem._id}>
@@ -96,7 +91,7 @@ function GroceryItem(props) {
 				<Icons
 					onClick={() =>
 						setEdit({
-							id: groceryItem.id,
+							_id: groceryItem._id,
 							text: groceryItem.itemName,
 							amount: groceryItem.amount,
 							measurement: groceryItem.measurement,

@@ -114,15 +114,20 @@ Colorpallet from Coolors:
 
 21. Went through and changed the user loggedIn? navigation routes. Can now add groceryItems to the groceryList. Grocery list items now render the the screen.
 
+22. Groceryitems can now be edited using an update mutation.
+
 Todo:
-// edit listItems on groceryList page.
-// Update the nav bar for logged in users info
-// Update grocery lists ( add users) and update grocery items (change amounts etc.)
-// Change the update / active state on the NAV bar to update "shopping list' to say 'yourlists' or the list name, or 'create list'
-// work on frontend visuals
 // create an input field on list page where you can add a friends username - this will add to the grocerylist array of users.
+
 // show what users are on this list - render to the screen
-// Update the mobile design (currently too small)
+
+// Update the nav bar for logged in users info
+
+// work on frontend visuals
+
+- // Change the update / active state on the NAV bar to update "shopping list' to say 'yourlists' or the list name, or 'create list'
+- // Update the mobile design (currently too small)
+
 // Go through the readme and update information
 
 Thank you, Vanessa Bloom <(^.^)>

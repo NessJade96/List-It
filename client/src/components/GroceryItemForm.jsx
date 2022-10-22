@@ -89,7 +89,7 @@ export default function GroceryItemForm(props) {
 				onSubmit={(e) => {
 					e.preventDefault();
 					props.onSubmit({
-						id: props.edit?.id,
+						_id: props.edit?._id,
 						text,
 						amount,
 						measurement,
