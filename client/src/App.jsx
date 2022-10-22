@@ -17,6 +17,7 @@ import SignupForm from './components/SignupForm';
 import LoginForm from './components/loginForm';
 import CreateList from './components/CreateList';
 import YourLists from './components/YourLists';
+import EditGroceryList from './components/EditGroceryList';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -55,6 +56,7 @@ function App() {
 				{Auth.loggedIn() ? (
 					<Routes>
 						<Route path="/:id" element={<GroceryItemList />} />
+						<Route path="/:id/users" element={<EditGroceryList />} />
 						<Route path="/createlist" element={<CreateList />} />
 						<Route path="/yourlists" element={<YourLists />} />
 						<Route path="/" element={<YourLists />} />

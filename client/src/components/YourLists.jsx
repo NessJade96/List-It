@@ -70,6 +70,9 @@ export default function YourLists() {
 						<StyledLink key={list._id} to={`/${list._id}`}>
 							{list.listName}
 						</StyledLink>
+						<Link to={`/${list._id}/users`}>
+							<Button>🧑‍🤝‍🧑</Button>
+						</Link>
 						<Button onClick={(e) => handleRemoveList(e, list._id)}>✖</Button>
 					</List>
 				);

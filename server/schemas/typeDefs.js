@@ -28,7 +28,7 @@ const typeDefs = gql`
 
 	input UpdateGrocerylistInput {
 		groceryListId: String!
-		usersId: String!
+		email: String!
 	}
 
 	input UpdateGroceryItemInput {

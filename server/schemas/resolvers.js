@@ -126,11 +126,21 @@ const resolvers = {
 		// Update the GroceryList so users can add other users to the GroceryList
 		updateGroceryList: async (_, args, context) => {
 			if (context.user) {
-				const {groceryListId, usersId} = args.input;
+				const {groceryListId, email} = args.input;
+				console.log(
+					'🚀 ~ file: resolvers.js ~ line 130 ~ updateGroceryList: ~ email',
+					email
+				);
+
+				const newUsersId = User.findOne({email});
+				console.log(
+					'🚀 ~ file: resolvers.js ~ line 132 ~ updateGroceryList: ~ newUsersId',
+					newUsersId
+				);
 
 				const groceryList = GroceryList.findOneAndUpdate(
 					{_id: groceryListId},
-					{$push: {users: usersId}},
+					{$push: {users: email}},
 					{new: true, runValidators: true}
 				).populate('users');
 				console.log('Grocery list updated');
