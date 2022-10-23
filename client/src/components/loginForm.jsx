@@ -3,6 +3,7 @@ import {useMutation} from '@apollo/client';
 import Auth from '../utils/auth';
 import {LOGIN_USER} from '../utils/mutations';
 import {NavLink} from 'react-router-dom';
+import Nav from './Nav';
 
 //Styled Components
 import {Button} from './Button';
@@ -40,8 +41,9 @@ const LoginForm = () => {
 
 	return (
 		<>
-			<H3 primary>Login to List It!</H3>
-			<H3>Don't have an account?</H3>
+			<Nav />
+			<H3 primary>Login</H3>
+			<H3>Don't have an account and want to join today?</H3>
 			<NavLink to="/signup" exact="true">
 				<Button style={{margin: '0 0 1rem 1.5rem'}}>Signup</Button>
 			</NavLink>

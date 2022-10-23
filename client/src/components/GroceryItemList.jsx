@@ -2,6 +2,7 @@ import React from 'react';
 import GroceryItemForm from './GroceryItemForm';
 import GroceryItem from './GroceryItem';
 import {useParams} from 'react-router-dom';
+import Nav from './Nav';
 import {useQuery} from '@apollo/client';
 
 import {GET_GROCERY_LIST} from '../utils/queries';
@@ -19,6 +20,7 @@ export default function GroceryItemList() {
 
 	return (
 		<>
+			<Nav header={groceryList.listName} />
 			<GroceryItemForm onSubmit={refetch} />
 			{groceryItems?.map((item) => {
 				return <GroceryItem key={item._id} groceryItem={item} />;

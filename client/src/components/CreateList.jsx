@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {useMutation, useQuery} from '@apollo/client';
+import Nav from './Nav';
 import {useNavigate} from 'react-router-dom';
 
 // Importing queries and mutaitons
@@ -40,6 +41,7 @@ export default function CreateList() {
 
 	return (
 		<>
+			<Nav header={'Create a new list'} />
 			<Form onSubmit={handleFormSubmit}>
 				<H3>Create a new list!</H3>
 				<Input

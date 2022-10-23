@@ -2,6 +2,7 @@ import React from 'react';
 import {useMutation, useQuery} from '@apollo/client';
 import styled, {css} from 'styled-components';
 import {Link} from 'react-router-dom';
+import Nav from './Nav';
 
 // Importing queries and mutaitons
 import {GET_ME} from '../utils/queries';
@@ -56,6 +57,7 @@ export default function YourLists() {
 
 	return (
 		<>
+			<Nav header={'Your Lists'} />
 			<H3>
 				{usersLists.length
 					? `Viewing your ${usersLists.length} saved ${

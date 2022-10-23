@@ -11,7 +11,6 @@ import Auth from './utils/auth';
 
 //Styles and components
 import GlobalStyle from './globalStyles';
-import Nav, {YourList} from './components/Nav';
 import GroceryItemList from './components/GroceryItemList';
 import SignupForm from './components/SignupForm';
 import LoginForm from './components/loginForm';
@@ -52,7 +51,6 @@ function App() {
 		<ApolloProvider client={client}>
 			<Router>
 				<GlobalStyle />
-				<Nav />
 				{Auth.loggedIn() ? (
 					<Routes>
 						<Route path="/:id" element={<GroceryItemList />} />

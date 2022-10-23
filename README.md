@@ -116,18 +116,11 @@ Colorpallet from Coolors:
 
 22. Groceryitems can now be edited using an update mutation. There is now a new button on the Yourlists page where you can add who else has access to the lists. This will add the new user to the groceryLists array of users. The users are then rendered to the screen.
 
+23. Moved the Nav component out of the App.jsx, and into each of the pages - this was to update the Header for each page.
+
 Todo:
-// create an input field on list page where you can add a friends username - this will add to the grocerylist array of users.
 
-// show what users are on this list - render to the screen
-
-// Update the nav bar for logged in users info
-
-- // Change the update / active state on the NAV bar to update "shopping list' to say 'yourlists' or the list name, or 'create list'
-
-// work on frontend visuals
-
-- // Update the mobile design (currently too small)
+// work on frontend visuals - // Update the mobile design (currently too small)
 
 // Go through the readme and update information
 

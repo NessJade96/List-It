@@ -35,7 +35,7 @@ export const YourList = styled.div`
 	}
 `;
 
-export default function Nav() {
+export default function Nav(props) {
 	// const listId = useQuery(GET_GROCERY_LIST);
 	// console.log('🚀 ~ file: Nav.jsx ~ line 40 ~ Nav ~ listId', listId);
 
@@ -53,7 +53,7 @@ export default function Nav() {
 						<NavLink onClick={Auth.logout} to="/login" exact="true">
 							<Button style={{margin: '0 0 1rem 0.7rem'}}>logout</Button>
 						</NavLink>
-						<H1>Shopping List</H1>
+						<H1>{props.header}</H1>
 					</div>
 				) : (
 					<div>
@@ -63,10 +63,9 @@ export default function Nav() {
 						<NavLink to="/login" exact="true">
 							<Button style={{margin: '0 0 1rem 1.5rem'}}>Login</Button>
 						</NavLink>
-						<H1>Shopping List</H1>
+						<H1>Welcome to List It!</H1>
 					</div>
 				)}
-				{/* <H1>Shopping List</H1> */}
 			</YourList>
 			<img className="avocado" src={avocado} alt="avocado"></img>
 		</Header>

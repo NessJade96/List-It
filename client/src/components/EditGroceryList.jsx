@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {useMutation, useQuery} from '@apollo/client';
 import {useParams} from 'react-router-dom';
 import styled, {css} from 'styled-components';
-import {Link} from 'react-router-dom';
+import Nav from './Nav';
 
 // Importing queries and mutaitons
 import {UPDATE_GROCERY_LIST} from '../utils/mutations';
@@ -23,11 +23,6 @@ const List = styled.div`
 	background: var(--Xanadu);
 	font-size: 1.5rem;
 	place-items: center;
-`;
-
-const StyledLink = styled(Link)`
-	color: var(--Purple);
-	flex-grow: 1;
 `;
 
 export default function EditGroceryList() {
@@ -67,6 +62,7 @@ export default function EditGroceryList() {
 
 	return (
 		<>
+			<Nav header={groceryList.listName} />
 			<Form onSubmit={handleFormSubmit}>
 				<H3>Add a user to share your list:</H3>
 				<Input
@@ -83,17 +79,11 @@ export default function EditGroceryList() {
 				{usersLists?.length
 					? `The ${usersLists.length} ${
 							usersLists.length === 1 ? 'user that has' : 'users that have'
-					  } access to this list:`
+					  } access to ${groceryList.listName}:`
 					: `you have not share this list with anyone`}
 			</H3>
 			{usersLists?.map((user) => {
-				return (
-					<List key={user._id}>
-						<StyledLink key={user._id} to={`/${user._id}`}>
-							{user.email}
-						</StyledLink>
-					</List>
-				);
+				return <List key={user._id}>{user.email}</List>;
 			})}
 		</>
 	);
