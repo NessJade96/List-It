@@ -122,6 +122,6 @@ Todo:
 
 // work on frontend visuals - // Update the mobile design (currently too small)
 
-// Go through the readme and update information
+// Go through the readme and update information (future development - PWA, making it so users can remove their shared users from grocery lists, give users permissions on lists, reset password abilities)
 
 Thank you, Vanessa Bloom <(^.^)>
