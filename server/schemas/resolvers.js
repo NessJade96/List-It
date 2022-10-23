@@ -31,9 +31,19 @@ const resolvers = {
 			throw new AuthenticationError('You need to be logged in!');
 		},
 		groceryList: async (_, {_id}) => {
-			const lists = await GroceryList.find({_id});
+			const groceryListInfo = await GroceryList.find({_id});
 
-			return lists[0];
+			const usersArray = await User.find({
+				_id: {$in: groceryListInfo[0].users},
+			}).select('email');
+
+			const returnGroceryList = {
+				_id: groceryListInfo[0]._id,
+				listName: groceryListInfo[0].listName,
+				users: usersArray,
+			};
+
+			return returnGroceryList;
 		},
 		groceryItem: async (_, {_id}) => {
 			return await GroceryItem.findById({_id});
@@ -127,20 +137,12 @@ const resolvers = {
 		updateGroceryList: async (_, args, context) => {
 			if (context.user) {
 				const {groceryListId, email} = args.input;
-				console.log(
-					'🚀 ~ file: resolvers.js ~ line 130 ~ updateGroceryList: ~ email',
-					email
-				);
 
-				const newUsersId = User.findOne({email});
-				console.log(
-					'🚀 ~ file: resolvers.js ~ line 132 ~ updateGroceryList: ~ newUsersId',
-					newUsersId
-				);
+				const newuser = await User.find({email});
 
 				const groceryList = GroceryList.findOneAndUpdate(
 					{_id: groceryListId},
-					{$push: {users: email}},
+					{$push: {users: newuser}},
 					{new: true, runValidators: true}
 				).populate('users');
 				console.log('Grocery list updated');

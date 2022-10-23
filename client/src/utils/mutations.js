@@ -79,13 +79,16 @@ export const REMOVE_GROCERY_LIST = gql`
 `;
 
 export const UPDATE_GROCERY_LIST = gql`
-	mutation UpdateGroceryList($updateGroceryListInput: UpdateGrocerylistInput!) {
-		updateGroceryList(input: $updateGroceryListInput) {
+	mutation UpdateGroceryList($input: UpdateGrocerylistInput!) {
+		updateGroceryList(input: $input) {
 			listName
 			users {
 				_id
 				username
 				email
+			}
+			users {
+				_id
 			}
 		}
 	}

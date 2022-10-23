@@ -24,6 +24,10 @@ export const GET_GROCERY_LIST = gql`
 				amount
 				measurement
 			}
+			users {
+				_id
+				email
+			}
 		}
 	}
 `;

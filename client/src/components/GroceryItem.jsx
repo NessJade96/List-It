@@ -5,6 +5,8 @@ import {useParams} from 'react-router-dom';
 import {useMutation, useQuery} from '@apollo/client';
 
 import {GET_GROCERY_LIST} from '../utils/queries';
+import {UPDATE_GROCERY_ITEM} from '../utils/mutations';
+import {REMOVE_GROCERY_ITEM} from '../utils/mutations';
 
 // Styled Components
 import styled from 'styled-components';
@@ -21,9 +23,6 @@ const GroceryRow = styled.div`
 	place-items: center;
 `;
 
-import {UPDATE_GROCERY_ITEM} from '../utils/mutations';
-import {REMOVE_GROCERY_ITEM} from '../utils/mutations';
-
 function GroceryItem(props) {
 	const {groceryItem} = props;
 
@@ -33,6 +32,7 @@ function GroceryItem(props) {
 		variables: {id},
 	});
 	const [removeItem] = useMutation(REMOVE_GROCERY_ITEM);
+	const [updateGroceryItem] = useMutation(UPDATE_GROCERY_ITEM);
 
 	const handleRemoveItem = async () => {
 		try {
@@ -47,8 +47,6 @@ function GroceryItem(props) {
 			console.log(err);
 		}
 	};
-
-	const [updateGroceryItem] = useMutation(UPDATE_GROCERY_ITEM);
 
 	const editGroceryListItem = async (groceryItem, id) => {
 		const {_id, text, amount, measurement} = groceryItem;
