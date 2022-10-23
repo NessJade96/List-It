@@ -20,7 +20,7 @@ import EditGroceryList from './components/EditGroceryList';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
-	uri: 'http://localhost:3001/graphql',
+	uri: '/graphql',
 	cache: new InMemoryCache(),
 });
 
