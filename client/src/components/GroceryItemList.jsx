@@ -10,12 +10,11 @@ import {GET_GROCERY_LIST} from '../utils/queries';
 export default function GroceryItemList() {
 	const {id} = useParams();
 
-	const {loading, data, error, refetch} = useQuery(GET_GROCERY_LIST, {
+	const {data, refetch} = useQuery(GET_GROCERY_LIST, {
 		variables: {id},
 	});
 
 	const groceryList = data?.groceryList || {};
-	const listName = groceryList.listName;
 	const groceryItems = groceryList.groceryItems;
 
 	return (
