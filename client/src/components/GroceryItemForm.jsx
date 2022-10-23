@@ -50,7 +50,7 @@ export default function GroceryItemForm(props) {
 		setText('');
 		setMeasurement('');
 		setAmount('');
-		props.onSubmit();
+		props.onSubmit(); //refetches the groceryList data
 	};
 
 	// Check to see if "edit" prop exists. If not, render the normal form

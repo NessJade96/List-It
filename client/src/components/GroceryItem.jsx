@@ -74,6 +74,7 @@ function GroceryItem(props) {
 	const submitUpdate = (text) => {
 		editGroceryListItem(text, id);
 		setEdit({_id: null, text: '', amount: '', measurement: ''});
+		refetch();
 	};
 
 	if (edit._id) {
@@ -98,7 +99,7 @@ function GroceryItem(props) {
 				>
 					✎
 				</Icons>
-				<Icons onClick={handleRemoveItem}>✔</Icons>
+				<Icons onClick={handleRemoveItem}>✗</Icons>
 			</div>
 		</GroceryRow>
 	);

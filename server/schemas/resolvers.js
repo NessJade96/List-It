@@ -32,10 +32,6 @@ const resolvers = {
 		},
 		groceryList: async (_, {_id}) => {
 			const groceryListInfo = await GroceryList.find({_id});
-			console.log(
-				'🚀 ~ file: resolvers.js ~ line 35 ~ groceryList: ~ groceryListInfo',
-				groceryListInfo[0].groceryItems
-			);
 
 			const usersArray = await User.find({
 				_id: {$in: groceryListInfo[0].users},
@@ -159,16 +155,48 @@ const resolvers = {
 		// Update the GroceryItem
 		updateGroceryItem: async (_, args, context) => {
 			if (context.user) {
-				const {_id, itemName, amount, measurement} = args.input;
+				const {groceryListId, _id, itemName, amount, measurement} = args.input;
 
-				const updatedGroceryItem = await GroceryItem.findOneAndUpdate(
-					{_id: _id},
-					{$set: {itemName, amount, measurement}},
-					{new: true, runValidators: true}
+				const updatedList = await GroceryList.findOneAndUpdate(
+					{
+						_id: groceryListId,
+					},
+					{
+						$set: {
+							'groceryItems.$[item]': {
+								_id,
+								itemName,
+								amount,
+								measurement,
+							},
+						},
+					},
+					{
+						arrayFilters: [
+							{
+								'item._id': _id,
+							},
+						],
+					}
 				);
-				console.log('Updated the grocery list item');
-				return updatedGroceryItem;
+
+				await GroceryItem.findOneAndUpdate(
+					{
+						_id,
+					},
+					{
+						$set: {
+							_id,
+							itemName,
+							amount,
+							measurement,
+						},
+					}
+				);
+
+				return updatedList.groceryItems.find((item) => item._id.equals(_id));
 			}
+
 			throw new AuthenticationError('Something went wrong :(');
 		},
 	},
