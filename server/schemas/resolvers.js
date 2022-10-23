@@ -32,6 +32,10 @@ const resolvers = {
 		},
 		groceryList: async (_, {_id}) => {
 			const groceryListInfo = await GroceryList.find({_id});
+			console.log(
+				'🚀 ~ file: resolvers.js ~ line 35 ~ groceryList: ~ groceryListInfo',
+				groceryListInfo[0].groceryItems
+			);
 
 			const usersArray = await User.find({
 				_id: {$in: groceryListInfo[0].users},
@@ -40,6 +44,7 @@ const resolvers = {
 			const returnGroceryList = {
 				_id: groceryListInfo[0]._id,
 				listName: groceryListInfo[0].listName,
+				groceryItems: groceryListInfo[0].groceryItems,
 				users: usersArray,
 			};
 

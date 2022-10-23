@@ -20,7 +20,10 @@ import EditGroceryList from './components/EditGroceryList';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
-	uri: '/graphql',
+	uri:
+		process.env.NODE_ENV === 'development'
+			? 'http://localhost:3001/graphql'
+			: '/graphql',
 	cache: new InMemoryCache(),
 });
 

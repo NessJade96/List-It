@@ -57,7 +57,7 @@ function GroceryItem(props) {
 						groceryListId: id,
 						_id,
 						itemName: text,
-						amount,
+						amount: Number(amount),
 						measurement,
 					},
 				},

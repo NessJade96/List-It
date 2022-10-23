@@ -64,7 +64,7 @@ export default function EditGroceryList() {
 		<>
 			<Nav header={groceryList.listName} />
 			<Form onSubmit={handleFormSubmit}>
-				<H3>Add a user to share your list:</H3>
+				<H3>Add a user's email to share your list:</H3>
 				<Input
 					type="text"
 					placeholder="Enter their email"
