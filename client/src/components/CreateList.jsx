@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {useMutation, useQuery} from '@apollo/client';
 import Nav from './Nav';
 import {useNavigate} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 // Importing queries and mutaitons
 import {ADD_GROCERY_LIST} from '../utils/mutations';
@@ -54,6 +55,9 @@ export default function CreateList() {
 				/>
 				<Button type="submit">Create</Button>
 			</Form>
+			<Link to={`/yourlists`}>
+				<Button>Back</Button>
+			</Link>
 		</>
 	);
 }

@@ -2,41 +2,32 @@
 
 ## Description:
 
--With PWA
-This is not just any shopping list, this shopping list is also a MERN PWA and is downloadable to your mobile and computer devices. This application is fast, reliable, and works offline. This is a dynamic application created with Mongodb, Express, React, and Node.
+This shopping list application is a dynamic application created with Mongodb, Express, React, and Node. The user is able to create an account, and access their saved shopping lists from anywhere, users can even link their shopping lists with others!
 
--Without PWA
-This shopping list application is a dynamic application created with Mongodb, Express, React, and Node. The user is able to create an account, and access their saved shopping lists from anywhere!
+## User Setup:
 
-## User Setup: // need to udpate!
-
-To use this at home, in the root folder, run in your terminal the following commands to invoke the application:
+To run locally go to the root folder in your terminal and run the following commands to invoke the application:
 `npm i` to install packages,
 then `npm run develop` starts the live servers.
 
 ## User Story
 
 ```md
-with PWA:
-AS A shopper
-I WANT to create a shopping list that I can share with others with or without an internet connection
-SO THAT I can reliably retrieve for later use at the supermarket
-
 without PWA:
 AS A shopper
 I WANT to create a shopping list that I can edit and share with others
 SO THAT I can retrieve for later use at the supermarket
 ```
 
-(Possible PWA support https://www.npmjs.com/package/vite-plugin-pwa )
-
 ## Screenshots:
+
+Here is the first concept wireframe before I began creating the application, color scheme etc.
 
 ![image](./assets/wireframe.PNG)
 
 ## Technologies used:
 
-Vite for React, HTML, CSS, Styled-Components, Babel-plugin-styled-components, Apollo, GraphQL, bcrypt, express, JWT, mongoose, nodemon, react-dom, react-router-dom, Vite,
+Vite for React, HTML, CSS, Styled-Components, Babel-plugin-styled-components, Apollo, GraphQL, bcrypt, express, JWT, mongoose, nodemon, react-dom, react-router-dom, and deployed on Heroku.
 
 ## Links:
 
@@ -53,7 +44,7 @@ Vite for React, HTML, CSS, Styled-Components, Babel-plugin-styled-components, Ap
   - link this to user signup (mutations/queries)
 - Setup React, src code etc. Client and Server
   - Create Users and grocery item lists in database.
-- Set up configs for PWA's (using Babel and Webpack) (Will do after MVP)
+- Create the typeDefs, Resolvers, Models, and link to the front end with the Mutations and Query functions to render that data to components on the frontend jsx files.
 
 Colorpallet from Coolors:
 
@@ -63,6 +54,13 @@ Colorpallet from Coolors:
 - Laurel Green: 169, 183, 155 RGB
 - Gainsboro: 221, 218, 222 RBG
   ![Colours](./assets/Colour%20Theme.jpg)
+
+## Future Development:
+
+- Turning the application into a PWA
+- Giving users the option to remove other users from their lists
+- Have the owners/creators of the shared list control the permissions of the others. Maybe some users can only add to the list and not remove, etc.
+- Have a reset password funciton
 
 ## Commit notes:
 
@@ -120,8 +118,11 @@ Colorpallet from Coolors:
 
 Todo:
 
+// Add a back button
+// Update font
+// Write / explain how to share the shopping list with other users.
 // work on frontend visuals - // Update the mobile design (currently too small)
 
-// Go through the readme and update information (future development - PWA, making it so users can remove their shared users from grocery lists, give users permissions on lists, reset password abilities)
+// go through the messages on slack and ensure I save everything I need before I lose access online.
 
 Thank you, Vanessa Bloom <(^.^)>

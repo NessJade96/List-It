@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {useMutation, useQuery} from '@apollo/client';
 import {useParams} from 'react-router-dom';
 import styled, {css} from 'styled-components';
+import {Link} from 'react-router-dom';
 import Nav from './Nav';
 
 // Importing queries and mutaitons
@@ -64,7 +65,10 @@ export default function EditGroceryList() {
 		<>
 			<Nav header={groceryList.listName} />
 			<Form onSubmit={handleFormSubmit}>
-				<H3>Add a user's email to share your list:</H3>
+				<H3>
+					Add another user's email below and that user will have access to your
+					list when they next login:
+				</H3>
 				<Input
 					type="text"
 					placeholder="Enter their email"
@@ -85,6 +89,9 @@ export default function EditGroceryList() {
 			{usersLists?.map((user) => {
 				return <List key={user._id}>{user.email}</List>;
 			})}
+			<Link to={`/yourlists`}>
+				<Button>Back</Button>
+			</Link>
 		</>
 	);
 }

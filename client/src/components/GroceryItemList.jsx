@@ -4,6 +4,8 @@ import GroceryItem from './GroceryItem';
 import {useParams} from 'react-router-dom';
 import Nav from './Nav';
 import {useQuery} from '@apollo/client';
+import {Link} from 'react-router-dom';
+import {Button} from './Button';
 
 import {GET_GROCERY_LIST} from '../utils/queries';
 
@@ -24,6 +26,9 @@ export default function GroceryItemList() {
 			{groceryItems?.map((item) => {
 				return <GroceryItem key={item._id} groceryItem={item} />;
 			})}
+			<Link to={`/yourlists`}>
+				<Button>Back</Button>
+			</Link>
 		</>
 	);
 }
