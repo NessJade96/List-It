@@ -56,7 +56,7 @@ export default function CreateList() {
 				<Button type="submit">Create</Button>
 			</Form>
 			<Link to={`/yourlists`}>
-				<Button>Back</Button>
+				<Button item>Back</Button>
 			</Link>
 		</>
 	);

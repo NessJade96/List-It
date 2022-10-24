@@ -6,8 +6,6 @@ import {NavLink} from 'react-router-dom';
 import {useMutation, useQuery} from '@apollo/client';
 import Auth from '../utils/auth';
 
-// import {GET_GROCERY_LIST} from '../utils/queries';
-
 export const Header = styled.header`
 	border-radius: 3px;
 	border-bottom: 2px solid var(--Gainsboro);
@@ -36,9 +34,6 @@ export const YourList = styled.div`
 `;
 
 export default function Nav(props) {
-	// const listId = useQuery(GET_GROCERY_LIST);
-	// console.log('🚀 ~ file: Nav.jsx ~ line 40 ~ Nav ~ listId', listId);
-
 	return (
 		<Header>
 			<YourList>

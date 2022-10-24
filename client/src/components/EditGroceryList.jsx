@@ -65,10 +65,11 @@ export default function EditGroceryList() {
 		<>
 			<Nav header={groceryList.listName} />
 			<Form onSubmit={handleFormSubmit}>
-				<H3>
+				<H3>Access</H3>
+				<p>
 					Add another user's email below and that user will have access to your
 					list when they next login:
-				</H3>
+				</p>
 				<Input
 					type="text"
 					placeholder="Enter their email"
@@ -78,6 +79,7 @@ export default function EditGroceryList() {
 					required
 				/>
 				<Button type="submit">Share</Button>
+				<p>*The user must already have an account*</p>
 			</Form>
 			<H3>
 				{usersLists?.length
@@ -90,7 +92,7 @@ export default function EditGroceryList() {
 				return <List key={user._id}>{user.email}</List>;
 			})}
 			<Link to={`/yourlists`}>
-				<Button>Back</Button>
+				<Button item>Back</Button>
 			</Link>
 		</>
 	);

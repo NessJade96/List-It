@@ -5,13 +5,20 @@ export const Button = styled.button`
 	font-size: 1rem;
 	padding: 0.25em 0.5em;
 	min-width: 5rem;
+	min-height: 2rem;
 	background: var(--Xanadu);
 	color: white;
 	border: 1px solid var(--Gainsboro);
-	align-self: end;
+	align-self: center;
 
 	&:hover {
 		background: var(--Xanadu);
 		color: white;
 	}
+
+	${(props) =>
+		props.item &&
+		css`
+			margin: 0 0 0 0.5rem;
+		`};
 `;

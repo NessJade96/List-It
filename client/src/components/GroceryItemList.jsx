@@ -27,7 +27,7 @@ export default function GroceryItemList() {
 				return <GroceryItem key={item._id} groceryItem={item} />;
 			})}
 			<Link to={`/yourlists`}>
-				<Button>Back</Button>
+				<Button item>Back</Button>
 			</Link>
 		</>
 	);
