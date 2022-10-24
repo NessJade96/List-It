@@ -5,6 +5,7 @@ export const Icons = styled.button`
 	padding: 0.5rem;
 	font-size: 1.5rem;
 	background-color: transparent;
+	color: white;
 
 	&:hover {
 		background: var(--Green);

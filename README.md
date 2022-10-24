@@ -117,7 +117,9 @@ Colorpallet from Coolors:
 23. Moved the Nav component out of the App.jsx, and into each of the pages - this was to update the Header for each page.
 
 Todo:
-
+//Update active link colors
+// refresh on live
+//update item on live
 // work on frontend visuals - // Update the mobile design (currently too small)
 
 // go through the messages on slack and ensure I save everything I need before I lose access online.
