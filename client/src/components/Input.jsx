@@ -9,5 +9,5 @@ export const Input = styled.input`
 	min-height: 2rem;
 	min-width: 20rem;
 	display: block;
-	touch-action: none;
+	preventfocuszoom: true;
 `;
