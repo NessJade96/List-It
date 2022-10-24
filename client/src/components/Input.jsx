@@ -9,11 +9,5 @@ export const Input = styled.input`
 	min-height: 2rem;
 	min-width: 20rem;
 	display: block;
-
-	${(props) =>
-		props.item &&
-		css`
-			min-height: 2rem;
-			min-width: 20rem;
-		`};
+	touch-action: none;
 `;

@@ -118,9 +118,6 @@ Colorpallet from Coolors:
 
 Todo:
 
-// Add a back button
-// Update font
-// Write / explain how to share the shopping list with other users.
 // work on frontend visuals - // Update the mobile design (currently too small)
 
 // go through the messages on slack and ensure I save everything I need before I lose access online.
