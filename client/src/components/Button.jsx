@@ -12,7 +12,11 @@ export const Button = styled.button`
 	align-self: center;
 
 	&:hover {
-		background: var(--Xanadu);
+		background: var(--Green);
+		border-color: var(--Xanadu);
+	}
+
+	&:visited {
 		color: white;
 	}
 

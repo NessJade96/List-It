@@ -26,6 +26,10 @@ const List = styled.div`
 const StyledLink = styled(Link)`
 	color: var(--Purple);
 	flex-grow: 1;
+
+	&:hover {
+		color: var(--Gainsboro);
+	}
 `;
 
 export default function YourLists() {

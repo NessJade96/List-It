@@ -25,7 +25,7 @@ body {
   margin: 0;
   padding: 0;
   background:  var(--Green) ;
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   display: block;
 }
 

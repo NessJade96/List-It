@@ -75,7 +75,7 @@ const SignupForm = () => {
 				/>
 				<Input
 					type="password"
-					placeholder="Enter a password?"
+					placeholder="Enter a new password"
 					onChange={handleInputChange}
 					value={userFormData.password}
 					name="password"

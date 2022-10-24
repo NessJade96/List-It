@@ -7,6 +7,11 @@ export const Icons = styled.button`
 	background-color: transparent;
 
 	&:hover {
-		color: var(--Gainsboro);
+		background: var(--Green);
+		border-color: var(--Xanadu);
+	}
+
+	&:visited {
+		color: white;
 	}
 `;

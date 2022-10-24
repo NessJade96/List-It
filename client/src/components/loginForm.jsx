@@ -58,7 +58,7 @@ const LoginForm = () => {
 				/>
 				<Input
 					type="password"
-					placeholder="Enter a password?"
+					placeholder="Enter password"
 					onChange={handleInputChange}
 					value={userFormData.password}
 					name="password"
