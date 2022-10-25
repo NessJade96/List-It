@@ -80,7 +80,7 @@ function GroceryItem(props) {
 	if (edit._id) {
 		return <GroceryItemForm edit={edit} onSubmit={submitUpdate} />;
 	}
-
+	refetch();
 	return (
 		<GroceryRow key={groceryItem._id}>
 			<div>
