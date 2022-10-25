@@ -3,7 +3,7 @@ import styled, {css} from 'styled-components';
 export const Button = styled.button`
 	border-radius: 3px;
 	font-size: 1rem;
-	padding: 0.25em 0.5em;
+	padding: 0.25em 0.25em;
 	min-width: 5rem;
 	min-height: 2rem;
 	background: var(--Xanadu);

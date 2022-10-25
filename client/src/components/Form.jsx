@@ -15,4 +15,8 @@ export const Form = styled.form`
 			background: var(--Xanadu);
 			color: white;
 		`};
+
+	@media (min-width: 550px) {
+		padding: 0.5rem 10rem;
+	}
 `;
